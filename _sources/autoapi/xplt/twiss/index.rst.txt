@@ -1,0 +1,200 @@
+:py:mod:`xplt.twiss`
+====================
+
+.. py:module:: xplt.twiss
+
+.. autoapi-nested-parse::
+
+   Methods for plotting twiss
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   xplt.twiss.TwissPlot
+
+
+
+
+.. py:class:: TwissPlot(twiss=None, kind='bet-dx,x+y', *, ax=None, line=None, line_kwargs=dict(), data_units=None, display_units=None, **subplots_kwargs)
+
+   Bases: :py:obj:`xplt.base.XPlot`
+
+   
+   A plot for twiss parameters and closed orbit
+
+   :param kind: Defines the properties to plot.
+                This can be a nested list or a separated string or a mixture of lists and strings where
+                the first list level (or separator ``,``) determines the subplots,
+                the second list level (or separator ``-``) determines any twinx-axes,
+                and the third list level (or separator ``+``) determines plots on the same axis.
+                In addition, abbreviations for x-y-parameter pairs are supported (e.g. 'bet' for 'betx+bety').
+
+                .. rubric:: Examples
+
+                - ``'bet-dx'``: single subplot with 'betx' and 'bety' on the left and 'dx' on the right axis
+                - ``[[['betx', 'bety'], ['dx']]]``: same as above
+                - ``'betx+alf,mu'``: two suplots the first with 'betx', 'alfx' and 'alfy' and the second with 'mux' and 'muy'
+                - ``[[['betx', 'alfx', 'alfy']], [['mux', 'muy']]]``: same as above
+   :param twiss: Dictionary with twiss information
+   :param ax: A list of axes to plot onto, length must match the number of subplots and optional line plot. If None, a new figure is created.
+              If required, twinx-axes will be added automatically.
+   :param line: Line of elements. If given, adds a line plot to the top.
+   :param line_kwargs: Keyword arguments passed to line plot.
+   :param data_units: Units of the data. If None, the units are determined from the data.
+   :type data_units: dict, optional
+   :param display_units: Units to display the data in. If None, the units are determined from the data.
+   :type display_units: dict, optional
+   :param subplots_kwargs: Keyword arguments passed to matplotlib.pyplot.subplots command when a new figure is created.
+
+   .. py:property:: axflat
+
+      Return a flat list of all primary axes
+
+   .. py:method:: add_scale(ax, scale, label=None, *, vertical=False, width=0.01, padding=0.1, loc='auto', color='k', fontsize='x-small')
+      :staticmethod:
+
+      Add a scale patch (a yardstick or ruler)
+
+      :param ax: The axis to add it to.
+      :param scale: The size of the scale in data units.
+      :param label: A label for the scale.
+      :type label: str, optional
+      :param vertical: If true, make a vertical one (default is a horizontal one).
+      :type vertical: bool
+      :param width: The line width of the scale in axis units.
+      :type width: float
+      :param padding: The padding between the scale and the axis.
+      :type padding: float
+      :param loc: The location of the scale. Can be any of the usual matplotlib locations, e.g. 'auto', 'upper left', 'upper center', 'upper right', 'center left', 'center', 'center right', 'lower left', 'lower center, 'lower right'.
+      :type loc: str
+      :param color: Color for the patch.
+      :param fontsize: Font size of the label.
+
+      :returns: The artist added (an AnchoredOffsetbox).
+
+
+   .. py:method:: axis_for(subplot=0, twin=0)
+
+      Return the axis for a given flat subplot index and twin index
+
+
+   .. py:method:: axline(kind, val, subplots='all', **kwargs)
+
+      Plot a vertical or horizontal line for a given coordinate
+
+      :param kind: property at which to place the line (e.g. "s", "x", "betx", etc.)
+      :type kind: str
+      :param val: Value of property
+      :type val: float
+      :param subplots: Subplots to plot line onto. Defaults to all with matching coordinates.
+      :type subplots: list of int
+      :param kwargs: Arguments for axvline or axhline
+
+
+   .. py:method:: axspan(kind, val, val_to=None, subplots='all', **kwargs)
+
+      Plot a vertical or horizontal span (or line) for a given coordinate
+
+      :param kind: property at which to place the line (e.g. "s", "x", "betx", etc.).
+      :type kind: str
+      :param val: Value of property.
+      :type val: float
+      :param val_to: Second value of property to plot a span. If this is None, plot a line instead of a span.
+      :type val_to: float, optional
+      :param subplots: Subplots to plot line onto. Defaults to all with matching coordinates.
+      :type subplots: list of int
+      :param kwargs: Arguments for axvspan or axhspan (or axvline or axhline if val_to is None)
+
+
+   .. py:method:: data_unit_for(p)
+
+      Return data unit for parameter
+
+
+   .. py:method:: display_unit_for(p)
+
+      Return display unit for parameter
+
+
+   .. py:method:: factor_for(p)
+
+      Return factor to convert parameter into display unit
+
+
+   .. py:method:: label_for(*pp, unit=True)
+
+      Return label for list of parameters, joining where possible
+
+      :param pp: Parameter names
+      :param unit: Wheather to include unit
+
+
+   .. py:method:: plot_harmonics(ax, v, dv=0, *, n=20, scale_width=True, vertical=True, inverse=False, **plot_kwargs)
+      :staticmethod:
+
+      Add vertical lines or spans indicating the location of values or spans and their harmonics
+
+      Indicates the bands at the h-th harmonics for h = 1, 2, ..., n
+      - h * (v ± dv/2)      if scale_width and not inverse (default)
+      - h * v ± dv/2        if not scale_width and not inverse
+      - h / (v ± dv/2)      if inverse and scale_width
+      - 1 / ( v/h ± dv/2 )  if inverse and not scale_width
+
+      :param ax: Axis to plot onto.
+      :param v: Value or list of values.
+      :type v: float or list of float
+      :param dv: Width or list of widths centered around value(s).
+      :type dv: float or list of float, optional
+      :param n: Number of harmonics to plot.
+      :type n: int
+      :param scale_width: Whether to scale the width for higher harmonics or keep it constant.
+      :type scale_width: bool, optional
+      :param vertical: Plot vertical lines if true, horizontal otherweise.
+      :type vertical: bool
+      :param inverse: If true, plot harmonics of n/(v±dv) instead of n*(v±dv). Useful to plot frequency harmonics in time domain and vice-versa.
+      :type inverse: bool
+      :param plot_kwargs: Keyword arguments to be passed to plotting method
+
+
+   .. py:method:: save(fname, **kwargs)
+
+      Save the figure
+
+
+   .. py:method:: set_axis_ticks_angle(yaxis, minor=True, deg=False)
+      :staticmethod:
+
+      Set ticks locator and formatter to display an angle
+
+      This will set ticks at multiples or fractions of 180° or pi with appropriate labels
+
+      :param yaxis: The axis to format (ax.xaxis or ax.yaxis)
+      :param minor: If true (default), also set the minor locator
+      :type minor: bool
+      :param deg: If true, use angles in degree. If false (default), in radians.
+      :type deg: bool
+
+
+   .. py:method:: title(title, **kwargs)
+
+      Set figure title
+
+
+   .. py:method:: update(twiss, *, autoscale=False, line=None)
+
+      Update the twiss data this plot shows
+
+      :param twiss: Dictionary with twiss information.
+      :param line: Line of elements.
+      :param autoscale: Whether or not to perform autoscaling on all axes.
+      :return: changed artists.
+
+
+

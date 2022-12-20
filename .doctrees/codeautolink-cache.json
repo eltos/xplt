@@ -1,0 +1,3408 @@
+{
+  "api": [],
+  "autoapi/xplt/base/index": [],
+  "autoapi/xplt/colors/index": [],
+  "autoapi/xplt/hooks/index": [],
+  "autoapi/xplt/index": [],
+  "autoapi/xplt/line/index": [],
+  "autoapi/xplt/particles/index": [],
+  "autoapi/xplt/phasespace/index": [],
+  "autoapi/xplt/timestructure/index": [],
+  "autoapi/xplt/twiss/index": [],
+  "autoapi/xplt/util/index": [],
+  "examples/animations": [
+    {
+      "source": "import xtrack as xt\nimport xpart as xp\nimport xplt\nimport numpy as np\nfrom matplotlib.animation import FuncAnimation\nfrom IPython.display import display, HTML\n\nnp.random.seed(43543557)",
+      "names": [
+        {
+          "import_components": [
+            "xplt"
+          ],
+          "code_str": "xplt",
+          "lineno": 3,
+          "end_lineno": 3,
+          "context": "import_target",
+          "resolved_location": "xplt"
+        },
+        {
+          "import_components": [
+            "numpy"
+          ],
+          "code_str": "numpy",
+          "lineno": 4,
+          "end_lineno": 4,
+          "context": "import_target",
+          "resolved_location": "numpy"
+        },
+        {
+          "import_components": [
+            "matplotlib",
+            "animation"
+          ],
+          "code_str": "matplotlib.animation",
+          "lineno": 5,
+          "end_lineno": 5,
+          "context": "import_from",
+          "resolved_location": "matplotlib.animation"
+        },
+        {
+          "import_components": [
+            "matplotlib",
+            "animation",
+            "FuncAnimation"
+          ],
+          "code_str": "FuncAnimation",
+          "lineno": 5,
+          "end_lineno": 5,
+          "context": "import_target",
+          "resolved_location": "matplotlib.animation.FuncAnimation"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "random",
+            "seed"
+          ],
+          "code_str": "np.random.seed",
+          "lineno": 8,
+          "end_lineno": 8,
+          "context": "none",
+          "resolved_location": "numpy.random.seed"
+        }
+      ],
+      "example": {
+        "document": "examples/animations",
+        "ref_id": "animations",
+        "headings": [
+          "Animations"
+        ]
+      },
+      "doc_lineno": 30002
+    },
+    {
+      "source": "## Generate a simple 6-fold symmetric FODO lattice\nn = 6\nelements = []\nfor i in range(n):\n    elements.extend(\n        [\n            xt.Drift(length=0.7),\n            xt.Multipole(length=0.3, knl=[0, +0.63], ksl=[0, 0]),\n            xt.Drift(length=0.7),\n            xt.Multipole(length=0.5, knl=[np.pi / n], hxl=[np.pi / n]),\n            xt.Drift(length=0.4),\n            xt.Multipole(length=0.2, knl=[0, 0, 0.5 * np.sin(2 * np.pi * (i / n))]),\n            xt.Drift(length=0.3),\n            xt.Multipole(length=0.3, knl=[0, -0.48], ksl=[0, 0]),  # -0.4\n            xt.Drift(length=0.7),\n            xt.Multipole(length=0.5, knl=[np.pi / n], hxl=[np.pi / n]),\n            xt.Drift(length=2.2),\n        ][:: -1 if i % 2 else 1]\n    )\n\nline = xt.Line(elements=elements)\n\n## Create the tracker\ntracker = xt.Tracker(line=line)",
+      "names": [
+        {
+          "import_components": [
+            "xtrack",
+            "Drift"
+          ],
+          "code_str": "xt.Drift",
+          "lineno": 7,
+          "end_lineno": 7,
+          "context": "none",
+          "resolved_location": "xtrack.Drift"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Multipole"
+          ],
+          "code_str": "xt.Multipole",
+          "lineno": 8,
+          "end_lineno": 8,
+          "context": "none",
+          "resolved_location": "xtrack.Multipole"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Drift"
+          ],
+          "code_str": "xt.Drift",
+          "lineno": 9,
+          "end_lineno": 9,
+          "context": "none",
+          "resolved_location": "xtrack.Drift"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "pi"
+          ],
+          "code_str": "np.pi",
+          "lineno": 10,
+          "end_lineno": 10,
+          "context": "none",
+          "resolved_location": "numpy.pi"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "pi"
+          ],
+          "code_str": "np.pi",
+          "lineno": 10,
+          "end_lineno": 10,
+          "context": "none",
+          "resolved_location": "numpy.pi"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Multipole"
+          ],
+          "code_str": "xt.Multipole",
+          "lineno": 10,
+          "end_lineno": 10,
+          "context": "none",
+          "resolved_location": "xtrack.Multipole"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Drift"
+          ],
+          "code_str": "xt.Drift",
+          "lineno": 11,
+          "end_lineno": 11,
+          "context": "none",
+          "resolved_location": "xtrack.Drift"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "pi"
+          ],
+          "code_str": "np.pi",
+          "lineno": 12,
+          "end_lineno": 12,
+          "context": "none",
+          "resolved_location": "numpy.pi"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "sin"
+          ],
+          "code_str": "np.sin",
+          "lineno": 12,
+          "end_lineno": 12,
+          "context": "none",
+          "resolved_location": "numpy.sin"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Multipole"
+          ],
+          "code_str": "xt.Multipole",
+          "lineno": 12,
+          "end_lineno": 12,
+          "context": "none",
+          "resolved_location": "xtrack.Multipole"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Drift"
+          ],
+          "code_str": "xt.Drift",
+          "lineno": 13,
+          "end_lineno": 13,
+          "context": "none",
+          "resolved_location": "xtrack.Drift"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Multipole"
+          ],
+          "code_str": "xt.Multipole",
+          "lineno": 14,
+          "end_lineno": 14,
+          "context": "none",
+          "resolved_location": "xtrack.Multipole"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Drift"
+          ],
+          "code_str": "xt.Drift",
+          "lineno": 15,
+          "end_lineno": 15,
+          "context": "none",
+          "resolved_location": "xtrack.Drift"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "pi"
+          ],
+          "code_str": "np.pi",
+          "lineno": 16,
+          "end_lineno": 16,
+          "context": "none",
+          "resolved_location": "numpy.pi"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "pi"
+          ],
+          "code_str": "np.pi",
+          "lineno": 16,
+          "end_lineno": 16,
+          "context": "none",
+          "resolved_location": "numpy.pi"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Multipole"
+          ],
+          "code_str": "xt.Multipole",
+          "lineno": 16,
+          "end_lineno": 16,
+          "context": "none",
+          "resolved_location": "xtrack.Multipole"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Drift"
+          ],
+          "code_str": "xt.Drift",
+          "lineno": 17,
+          "end_lineno": 17,
+          "context": "none",
+          "resolved_location": "xtrack.Drift"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Line"
+          ],
+          "code_str": "xt.Line",
+          "lineno": 21,
+          "end_lineno": 21,
+          "context": "none",
+          "resolved_location": "xtrack.Line"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Tracker"
+          ],
+          "code_str": "xt.Tracker",
+          "lineno": 24,
+          "end_lineno": 24,
+          "context": "none",
+          "resolved_location": "xtrack.Tracker"
+        }
+      ],
+      "example": {
+        "document": "examples/animations",
+        "ref_id": "animations",
+        "headings": [
+          "Animations"
+        ]
+      },
+      "doc_lineno": 40002
+    },
+    {
+      "source": "## Generate particles\nline.particle_ref = xp.Particles(mass0=xp.PROTON_MASS_EV, q0=1, p0c=1e9)\nnparticles = int(1e3)\n\n# Transverse distribution (gaussian)\nnorm_emitt_x = 2e-6  # normalized 1-sigma emittance in m*rad (=beta*gamma*emitt_x)\nnorm_emitt_y = 1e-6  # normalized 1-sigma emittance in m*rad (=beta*gamma*emitt_y)\nx, px = xp.generate_2D_gaussian(nparticles)\ny, py = xp.generate_2D_gaussian(nparticles)\n\n# Longitudinal distribution (coasting beam)\nrel_momentum_spread = 1e-4  # relative momentum spread ( P/p0 - 1 )\nzeta = line.get_length() * np.random.uniform(-0.5, 0.5, nparticles)\ndelta = rel_momentum_spread * xp.generate_2D_gaussian(nparticles)[0]\n\nparticles = xp.build_particles(\n    tracker=tracker,\n    particle_ref=line.particle_ref,\n    x_norm=x,\n    px_norm=px,\n    nemitt_x=norm_emitt_x,\n    y_norm=y,\n    py_norm=py,\n    nemitt_y=norm_emitt_y,\n    method=\"4d\",  # for twiss (default is 6d, won't work without a cavity)\n    zeta=zeta,\n    delta=delta,\n)",
+      "names": [
+        {
+          "import_components": [
+            "xpart",
+            "Particles"
+          ],
+          "code_str": "xp.Particles",
+          "lineno": 2,
+          "end_lineno": 2,
+          "context": "none",
+          "resolved_location": "xpart.Particles"
+        },
+        {
+          "import_components": [
+            "xpart",
+            "generate_2D_gaussian"
+          ],
+          "code_str": "xp.generate_2D_gaussian",
+          "lineno": 8,
+          "end_lineno": 8,
+          "context": "none",
+          "resolved_location": "xpart.generate_2D_gaussian"
+        },
+        {
+          "import_components": [
+            "xpart",
+            "generate_2D_gaussian"
+          ],
+          "code_str": "xp.generate_2D_gaussian",
+          "lineno": 9,
+          "end_lineno": 9,
+          "context": "none",
+          "resolved_location": "xpart.generate_2D_gaussian"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "random",
+            "uniform"
+          ],
+          "code_str": "np.random.uniform",
+          "lineno": 13,
+          "end_lineno": 13,
+          "context": "none",
+          "resolved_location": "numpy.random.uniform"
+        },
+        {
+          "import_components": [
+            "xpart",
+            "generate_2D_gaussian"
+          ],
+          "code_str": "xp.generate_2D_gaussian",
+          "lineno": 14,
+          "end_lineno": 14,
+          "context": "none",
+          "resolved_location": "xpart.generate_2D_gaussian"
+        },
+        {
+          "import_components": [
+            "xpart",
+            "build_particles"
+          ],
+          "code_str": "xp.build_particles",
+          "lineno": 16,
+          "end_lineno": 16,
+          "context": "none",
+          "resolved_location": "xpart.build_particles"
+        }
+      ],
+      "example": {
+        "document": "examples/animations",
+        "ref_id": "animations",
+        "headings": [
+          "Animations"
+        ]
+      },
+      "doc_lineno": 50002
+    },
+    {
+      "source": "## Generate tracking data\ntracker.track(particles, num_turns=50, turn_by_turn_monitor=True)",
+      "names": [],
+      "example": {
+        "document": "examples/animations",
+        "ref_id": "animations",
+        "headings": [
+          "Animations"
+        ]
+      },
+      "doc_lineno": 60002
+    },
+    {
+      "source": "# use a faster backend\nxplt.mpl.rcParams[\"backend\"] = \"nbagg\"\n# increase buffer size\nxplt.mpl.rcParams[\"animation.embed_limit\"] = 100  # MB\n# use a faster style\nxplt.mpl.style.use(\"fast\")",
+      "names": [],
+      "example": {
+        "document": "examples/animations",
+        "ref_id": "animations",
+        "headings": [
+          "Animations"
+        ]
+      },
+      "doc_lineno": 80002
+    },
+    {
+      "source": "plot = xplt.PhaseSpacePlot(animated=True, std=True, mean=True)\nparticle_data = tracker.record_last_track\n\n\ndef animate(i):\n    turn = particle_data.at_turn[0, i]\n    plot.fig.suptitle(f\"Turn {turn}\")\n    return plot.update(\n        particle_data,\n        mask=(slice(None), i),  # select all particles and a single turn\n        autoscale=(i == 0),\n    )\n\n\nanim = FuncAnimation(plot.fig, animate, frames=range(0, 50, 3), interval=100, blit=True)\n\ndisplay(HTML(anim.to_jshtml()))\n# anim.save('anim.gif', dpi=150, progress_callback=lambda i,n: print(f'\\rSaving... {i*100/n:3.1f}% ({i}/{n})', end=''))",
+      "names": [
+        {
+          "import_components": [
+            "xplt",
+            "PhaseSpacePlot"
+          ],
+          "code_str": "xplt.PhaseSpacePlot",
+          "lineno": 1,
+          "end_lineno": 1,
+          "context": "none",
+          "resolved_location": "xplt.phasespace.PhaseSpacePlot"
+        },
+        {
+          "import_components": [
+            "xplt",
+            "PhaseSpacePlot",
+            "()"
+          ],
+          "code_str": "plot",
+          "lineno": 1,
+          "end_lineno": 1,
+          "context": "none",
+          "resolved_location": "xplt.phasespace.PhaseSpacePlot"
+        },
+        {
+          "import_components": [
+            "xplt",
+            "PhaseSpacePlot",
+            "()",
+            "update"
+          ],
+          "code_str": "plot.update",
+          "lineno": 8,
+          "end_lineno": 8,
+          "context": "none",
+          "resolved_location": "xplt.phasespace.PhaseSpacePlot.update"
+        },
+        {
+          "import_components": [
+            "matplotlib",
+            "animation",
+            "FuncAnimation"
+          ],
+          "code_str": "FuncAnimation",
+          "lineno": 15,
+          "end_lineno": 15,
+          "context": "none",
+          "resolved_location": "matplotlib.animation.FuncAnimation"
+        },
+        {
+          "import_components": [
+            "matplotlib",
+            "animation",
+            "FuncAnimation",
+            "()"
+          ],
+          "code_str": "anim",
+          "lineno": 15,
+          "end_lineno": 15,
+          "context": "none",
+          "resolved_location": "matplotlib.animation.FuncAnimation"
+        },
+        {
+          "import_components": [
+            "matplotlib",
+            "animation",
+            "FuncAnimation",
+            "()",
+            "to_jshtml"
+          ],
+          "code_str": "anim.to_jshtml",
+          "lineno": 17,
+          "end_lineno": 17,
+          "context": "none",
+          "resolved_location": "matplotlib.animation.Animation.to_jshtml"
+        }
+      ],
+      "example": {
+        "document": "examples/animations",
+        "ref_id": "phase-space-animation",
+        "headings": [
+          "Animations",
+          "Phase space animation"
+        ]
+      },
+      "doc_lineno": 110002
+    },
+    {
+      "source": "# especially for larger animations, it is good practice to clean up:\nplot.fig.clear()\n# xplt.plt.close()\ndel plot\nimport gc\n\ngc.collect();",
+      "names": [
+        {
+          "import_components": [
+            "xplt",
+            "PhaseSpacePlot",
+            "()"
+          ],
+          "code_str": "plot",
+          "lineno": 4,
+          "end_lineno": 4,
+          "context": "none",
+          "resolved_location": "xplt.phasespace.PhaseSpacePlot"
+        }
+      ],
+      "example": {
+        "document": "examples/animations",
+        "ref_id": "phase-space-animation",
+        "headings": [
+          "Animations",
+          "Phase space animation"
+        ]
+      },
+      "doc_lineno": 120002
+    }
+  ],
+  "examples/colors": [
+    {
+      "source": "import xplt",
+      "names": [
+        {
+          "import_components": [
+            "xplt"
+          ],
+          "code_str": "xplt",
+          "lineno": 1,
+          "end_lineno": 1,
+          "context": "import_target",
+          "resolved_location": "xplt"
+        }
+      ],
+      "example": {
+        "document": "examples/colors",
+        "ref_id": "colors",
+        "headings": [
+          "Colors"
+        ]
+      },
+      "doc_lineno": 30002
+    },
+    {
+      "source": "xplt.cmap_petroff",
+      "names": [],
+      "example": {
+        "document": "examples/colors",
+        "ref_id": "colormaps",
+        "headings": [
+          "Colors",
+          "Colormaps"
+        ]
+      },
+      "doc_lineno": 50002
+    },
+    {
+      "source": "xplt.cmap_petroff_gradient",
+      "names": [],
+      "example": {
+        "document": "examples/colors",
+        "ref_id": "colormaps",
+        "headings": [
+          "Colors",
+          "Colormaps"
+        ]
+      },
+      "doc_lineno": 70002
+    },
+    {
+      "source": "xplt.cmap_petroff_bipolar",
+      "names": [],
+      "example": {
+        "document": "examples/colors",
+        "ref_id": "colormaps",
+        "headings": [
+          "Colors",
+          "Colormaps"
+        ]
+      },
+      "doc_lineno": 90002
+    },
+    {
+      "source": "xplt.cmap_petroff_cyclic",
+      "names": [],
+      "example": {
+        "document": "examples/colors",
+        "ref_id": "colormaps",
+        "headings": [
+          "Colors",
+          "Colormaps"
+        ]
+      },
+      "doc_lineno": 110002
+    },
+    {
+      "source": "import matplotlib.pyplot as plt\nimport numpy as np\n\nfig, ax = plt.subplots()\nt = np.linspace(0, 2 * np.pi, 1024)\ndata2d = np.sin(t)[:, np.newaxis] * np.cos(t)[np.newaxis, :]\nim = ax.imshow(data2d, cmap=\"petroff_bipolar\")\nfig.colorbar(im, ax=ax, label=\"Color\");",
+      "names": [
+        {
+          "import_components": [
+            "matplotlib",
+            "pyplot"
+          ],
+          "code_str": "matplotlib.pyplot",
+          "lineno": 1,
+          "end_lineno": 1,
+          "context": "import_target",
+          "resolved_location": "matplotlib.pyplot"
+        },
+        {
+          "import_components": [
+            "numpy"
+          ],
+          "code_str": "numpy",
+          "lineno": 2,
+          "end_lineno": 2,
+          "context": "import_target",
+          "resolved_location": "numpy"
+        },
+        {
+          "import_components": [
+            "matplotlib",
+            "pyplot",
+            "subplots"
+          ],
+          "code_str": "plt.subplots",
+          "lineno": 4,
+          "end_lineno": 4,
+          "context": "none",
+          "resolved_location": "matplotlib.pyplot.subplots"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "pi"
+          ],
+          "code_str": "np.pi",
+          "lineno": 5,
+          "end_lineno": 5,
+          "context": "none",
+          "resolved_location": "numpy.pi"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "linspace"
+          ],
+          "code_str": "np.linspace",
+          "lineno": 5,
+          "end_lineno": 5,
+          "context": "none",
+          "resolved_location": "numpy.linspace"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "sin"
+          ],
+          "code_str": "np.sin",
+          "lineno": 6,
+          "end_lineno": 6,
+          "context": "none",
+          "resolved_location": "numpy.sin"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "cos"
+          ],
+          "code_str": "np.cos",
+          "lineno": 6,
+          "end_lineno": 6,
+          "context": "none",
+          "resolved_location": "numpy.cos"
+        }
+      ],
+      "example": {
+        "document": "examples/colors",
+        "ref_id": "usage",
+        "headings": [
+          "Colors",
+          "Usage"
+        ]
+      },
+      "doc_lineno": 170002
+    }
+  ],
+  "examples/hamiltonians": [
+    {
+      "source": "import xtrack as xt\nimport xpart as xp\nimport xplt\nimport numpy as np\n\nnp.random.seed(43543557)",
+      "names": [
+        {
+          "import_components": [
+            "xplt"
+          ],
+          "code_str": "xplt",
+          "lineno": 3,
+          "end_lineno": 3,
+          "context": "import_target",
+          "resolved_location": "xplt"
+        },
+        {
+          "import_components": [
+            "numpy"
+          ],
+          "code_str": "numpy",
+          "lineno": 4,
+          "end_lineno": 4,
+          "context": "import_target",
+          "resolved_location": "numpy"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "random",
+            "seed"
+          ],
+          "code_str": "np.random.seed",
+          "lineno": 6,
+          "end_lineno": 6,
+          "context": "none",
+          "resolved_location": "numpy.random.seed"
+        }
+      ],
+      "example": {
+        "document": "examples/hamiltonians",
+        "ref_id": "hamiltonians",
+        "headings": [
+          "Hamiltonians"
+        ]
+      },
+      "doc_lineno": 30002
+    },
+    {
+      "source": "## Generate a simple 6-fold symmetric FODO lattice\nn = 6\nelements = []\nfor i in range(n):\n    elements.extend(\n        [\n            xt.Drift(length=0.7),\n            xt.Multipole(length=0.3, knl=[0, +0.63], ksl=[0, 0]),\n            xt.Drift(length=0.7),\n            xt.Multipole(length=0.5, knl=[np.pi / n], hxl=[np.pi / n]),\n            xt.Drift(length=0.4),\n            xt.Multipole(length=0.2, knl=[0, 0, 0.5 * np.sin(2 * np.pi * (i / n))]),\n            xt.Drift(length=0.3),\n            xt.Multipole(length=0.3, knl=[0, -0.48], ksl=[0, 0]),  # -0.4\n            xt.Drift(length=0.7),\n            xt.Multipole(length=0.5, knl=[np.pi / n], hxl=[np.pi / n]),\n            xt.Drift(length=2.2),\n        ][:: -1 if i % 2 else 1]\n    )\nelements.append(xt.LimitRect(min_x=-0.01, max_x=0.01, min_y=-np.inf, max_y=np.inf))\nline = xt.Line(elements=elements.copy())\n\n## Create the tracker\nline.particle_ref = xp.Particles(mass0=xp.PROTON_MASS_EV, q0=1, p0c=1e9)\ntracker = xt.Tracker(line=line)",
+      "names": [
+        {
+          "import_components": [
+            "xtrack",
+            "Drift"
+          ],
+          "code_str": "xt.Drift",
+          "lineno": 7,
+          "end_lineno": 7,
+          "context": "none",
+          "resolved_location": "xtrack.Drift"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Multipole"
+          ],
+          "code_str": "xt.Multipole",
+          "lineno": 8,
+          "end_lineno": 8,
+          "context": "none",
+          "resolved_location": "xtrack.Multipole"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Drift"
+          ],
+          "code_str": "xt.Drift",
+          "lineno": 9,
+          "end_lineno": 9,
+          "context": "none",
+          "resolved_location": "xtrack.Drift"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "pi"
+          ],
+          "code_str": "np.pi",
+          "lineno": 10,
+          "end_lineno": 10,
+          "context": "none",
+          "resolved_location": "numpy.pi"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "pi"
+          ],
+          "code_str": "np.pi",
+          "lineno": 10,
+          "end_lineno": 10,
+          "context": "none",
+          "resolved_location": "numpy.pi"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Multipole"
+          ],
+          "code_str": "xt.Multipole",
+          "lineno": 10,
+          "end_lineno": 10,
+          "context": "none",
+          "resolved_location": "xtrack.Multipole"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Drift"
+          ],
+          "code_str": "xt.Drift",
+          "lineno": 11,
+          "end_lineno": 11,
+          "context": "none",
+          "resolved_location": "xtrack.Drift"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "pi"
+          ],
+          "code_str": "np.pi",
+          "lineno": 12,
+          "end_lineno": 12,
+          "context": "none",
+          "resolved_location": "numpy.pi"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "sin"
+          ],
+          "code_str": "np.sin",
+          "lineno": 12,
+          "end_lineno": 12,
+          "context": "none",
+          "resolved_location": "numpy.sin"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Multipole"
+          ],
+          "code_str": "xt.Multipole",
+          "lineno": 12,
+          "end_lineno": 12,
+          "context": "none",
+          "resolved_location": "xtrack.Multipole"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Drift"
+          ],
+          "code_str": "xt.Drift",
+          "lineno": 13,
+          "end_lineno": 13,
+          "context": "none",
+          "resolved_location": "xtrack.Drift"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Multipole"
+          ],
+          "code_str": "xt.Multipole",
+          "lineno": 14,
+          "end_lineno": 14,
+          "context": "none",
+          "resolved_location": "xtrack.Multipole"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Drift"
+          ],
+          "code_str": "xt.Drift",
+          "lineno": 15,
+          "end_lineno": 15,
+          "context": "none",
+          "resolved_location": "xtrack.Drift"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "pi"
+          ],
+          "code_str": "np.pi",
+          "lineno": 16,
+          "end_lineno": 16,
+          "context": "none",
+          "resolved_location": "numpy.pi"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "pi"
+          ],
+          "code_str": "np.pi",
+          "lineno": 16,
+          "end_lineno": 16,
+          "context": "none",
+          "resolved_location": "numpy.pi"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Multipole"
+          ],
+          "code_str": "xt.Multipole",
+          "lineno": 16,
+          "end_lineno": 16,
+          "context": "none",
+          "resolved_location": "xtrack.Multipole"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Drift"
+          ],
+          "code_str": "xt.Drift",
+          "lineno": 17,
+          "end_lineno": 17,
+          "context": "none",
+          "resolved_location": "xtrack.Drift"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "inf"
+          ],
+          "code_str": "np.inf",
+          "lineno": 20,
+          "end_lineno": 20,
+          "context": "none",
+          "resolved_location": "numpy.inf"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "inf"
+          ],
+          "code_str": "np.inf",
+          "lineno": 20,
+          "end_lineno": 20,
+          "context": "none",
+          "resolved_location": "numpy.inf"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "LimitRect"
+          ],
+          "code_str": "xt.LimitRect",
+          "lineno": 20,
+          "end_lineno": 20,
+          "context": "none",
+          "resolved_location": "xtrack.LimitRect"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Line"
+          ],
+          "code_str": "xt.Line",
+          "lineno": 21,
+          "end_lineno": 21,
+          "context": "none",
+          "resolved_location": "xtrack.Line"
+        },
+        {
+          "import_components": [
+            "xpart",
+            "Particles"
+          ],
+          "code_str": "xp.Particles",
+          "lineno": 24,
+          "end_lineno": 24,
+          "context": "none",
+          "resolved_location": "xpart.Particles"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Tracker"
+          ],
+          "code_str": "xt.Tracker",
+          "lineno": 25,
+          "end_lineno": 25,
+          "context": "none",
+          "resolved_location": "xtrack.Tracker"
+        }
+      ],
+      "example": {
+        "document": "examples/hamiltonians",
+        "ref_id": "hamiltonians",
+        "headings": [
+          "Hamiltonians"
+        ]
+      },
+      "doc_lineno": 40002
+    },
+    {
+      "source": "## Generate particles\nline.particle_ref = xp.Particles(mass0=xp.PROTON_MASS_EV, q0=1, p0c=1e9)\nnparticles = int(1e4)\n\n# Transverse distribution (gaussian)\nnorm_emitt_x = 2e-6  # normalized 1-sigma emittance in m*rad (=beta*gamma*emitt_x)\nnorm_emitt_y = 1e-6  # normalized 1-sigma emittance in m*rad (=beta*gamma*emitt_y)\nx, px = xp.generate_2D_gaussian(nparticles)\ny, py = xp.generate_2D_gaussian(nparticles)\n\n# Longitudinal distribution (coasting beam)\nrel_momentum_spread = 1e-4  # relative momentum spread ( P/p0 - 1 )\nzeta = line.get_length() * np.random.uniform(-0.5, 0.5, nparticles)\ndelta = rel_momentum_spread * xp.generate_2D_gaussian(nparticles)[0]\n\nparticles = xp.build_particles(\n    tracker=tracker,\n    particle_ref=line.particle_ref,\n    x_norm=x,\n    px_norm=px,\n    nemitt_x=norm_emitt_x,\n    y_norm=y,\n    py_norm=py,\n    nemitt_y=norm_emitt_y,\n    method=\"4d\",  # for twiss (default is 6d, won't work without a cavity)\n    zeta=zeta,\n    delta=delta,\n)",
+      "names": [
+        {
+          "import_components": [
+            "xpart",
+            "Particles"
+          ],
+          "code_str": "xp.Particles",
+          "lineno": 2,
+          "end_lineno": 2,
+          "context": "none",
+          "resolved_location": "xpart.Particles"
+        },
+        {
+          "import_components": [
+            "xpart",
+            "generate_2D_gaussian"
+          ],
+          "code_str": "xp.generate_2D_gaussian",
+          "lineno": 8,
+          "end_lineno": 8,
+          "context": "none",
+          "resolved_location": "xpart.generate_2D_gaussian"
+        },
+        {
+          "import_components": [
+            "xpart",
+            "generate_2D_gaussian"
+          ],
+          "code_str": "xp.generate_2D_gaussian",
+          "lineno": 9,
+          "end_lineno": 9,
+          "context": "none",
+          "resolved_location": "xpart.generate_2D_gaussian"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "random",
+            "uniform"
+          ],
+          "code_str": "np.random.uniform",
+          "lineno": 13,
+          "end_lineno": 13,
+          "context": "none",
+          "resolved_location": "numpy.random.uniform"
+        },
+        {
+          "import_components": [
+            "xpart",
+            "generate_2D_gaussian"
+          ],
+          "code_str": "xp.generate_2D_gaussian",
+          "lineno": 14,
+          "end_lineno": 14,
+          "context": "none",
+          "resolved_location": "xpart.generate_2D_gaussian"
+        },
+        {
+          "import_components": [
+            "xpart",
+            "build_particles"
+          ],
+          "code_str": "xp.build_particles",
+          "lineno": 16,
+          "end_lineno": 16,
+          "context": "none",
+          "resolved_location": "xpart.build_particles"
+        }
+      ],
+      "example": {
+        "document": "examples/hamiltonians",
+        "ref_id": "kobayashi-hamiltonian",
+        "headings": [
+          "Hamiltonians",
+          "Kobayashi Hamiltonian"
+        ]
+      },
+      "doc_lineno": 70002
+    },
+    {
+      "source": "## Track for a few turns and then stop at the sextupole\ntracker.track(particles, num_turns=500, ele_stop=3)\nprint(f\"{np.sum(particles.state <= 0)} of {len(particles.state)} particles lost\")\n\n## Determine twiss parameters for normalized phase space plots\ntw = tracker.twiss(method=\"4d\", at_elements=[3])",
+      "names": [
+        {
+          "import_components": [
+            "numpy",
+            "sum"
+          ],
+          "code_str": "np.sum",
+          "lineno": 3,
+          "end_lineno": 3,
+          "context": "none",
+          "resolved_location": "numpy.sum"
+        }
+      ],
+      "example": {
+        "document": "examples/hamiltonians",
+        "ref_id": "kobayashi-hamiltonian",
+        "headings": [
+          "Hamiltonians",
+          "Kobayashi Hamiltonian"
+        ]
+      },
+      "doc_lineno": 80002
+    },
+    {
+      "source": "plot = xplt.PhaseSpacePlot(particles, mask=particles.state > 0, kind=\"X,x\", twiss=tw)\n\n# determine the virtual sextupole\nS, mu = xplt.util.virtual_sextupole(tracker)\n\nprint(f\"S = {S:g} m^(-1/2)\")\nprint(f\"mu = {mu:g} rad/2pi\")\n\n# plot the hamiltonian\nplot.plot_hamiltonian_kobayashi(0, S=S, mu=mu, extend=5)\nplot.plot_hamiltonian_kobayashi(1, S=S, mu=mu)",
+      "names": [
+        {
+          "import_components": [
+            "xplt",
+            "PhaseSpacePlot"
+          ],
+          "code_str": "xplt.PhaseSpacePlot",
+          "lineno": 1,
+          "end_lineno": 1,
+          "context": "none",
+          "resolved_location": "xplt.phasespace.PhaseSpacePlot"
+        },
+        {
+          "import_components": [
+            "xplt",
+            "PhaseSpacePlot",
+            "()"
+          ],
+          "code_str": "plot",
+          "lineno": 1,
+          "end_lineno": 1,
+          "context": "none",
+          "resolved_location": "xplt.phasespace.PhaseSpacePlot"
+        },
+        {
+          "import_components": [
+            "xplt",
+            "util",
+            "virtual_sextupole"
+          ],
+          "code_str": "xplt.util.virtual_sextupole",
+          "lineno": 4,
+          "end_lineno": 4,
+          "context": "none",
+          "resolved_location": "xplt.util.virtual_sextupole"
+        },
+        {
+          "import_components": [
+            "xplt",
+            "PhaseSpacePlot",
+            "()",
+            "plot_hamiltonian_kobayashi"
+          ],
+          "code_str": "plot.plot_hamiltonian_kobayashi",
+          "lineno": 10,
+          "end_lineno": 10,
+          "context": "none",
+          "resolved_location": "xplt.phasespace.PhaseSpacePlot.plot_hamiltonian_kobayashi"
+        },
+        {
+          "import_components": [
+            "xplt",
+            "PhaseSpacePlot",
+            "()",
+            "plot_hamiltonian_kobayashi"
+          ],
+          "code_str": "plot.plot_hamiltonian_kobayashi",
+          "lineno": 11,
+          "end_lineno": 11,
+          "context": "none",
+          "resolved_location": "xplt.phasespace.PhaseSpacePlot.plot_hamiltonian_kobayashi"
+        }
+      ],
+      "example": {
+        "document": "examples/hamiltonians",
+        "ref_id": "kobayashi-hamiltonian",
+        "headings": [
+          "Hamiltonians",
+          "Kobayashi Hamiltonian"
+        ]
+      },
+      "doc_lineno": 100002
+    }
+  ],
+  "examples/line": [
+    {
+      "source": "import xtrack as xt\nimport xpart as xp\nimport xplt\nimport numpy as np\n\nnp.random.seed(36963142)",
+      "names": [
+        {
+          "import_components": [
+            "xplt"
+          ],
+          "code_str": "xplt",
+          "lineno": 3,
+          "end_lineno": 3,
+          "context": "import_target",
+          "resolved_location": "xplt"
+        },
+        {
+          "import_components": [
+            "numpy"
+          ],
+          "code_str": "numpy",
+          "lineno": 4,
+          "end_lineno": 4,
+          "context": "import_target",
+          "resolved_location": "numpy"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "random",
+            "seed"
+          ],
+          "code_str": "np.random.seed",
+          "lineno": 6,
+          "end_lineno": 6,
+          "context": "none",
+          "resolved_location": "numpy.random.seed"
+        }
+      ],
+      "example": {
+        "document": "examples/line",
+        "ref_id": "beamline",
+        "headings": [
+          "Beamline"
+        ]
+      },
+      "doc_lineno": 30002
+    },
+    {
+      "source": "## Generate a simple 6-fold symmetric FODO lattice\nn = 6\nelements = []\nelement_names = []\nfor i in range(n):\n    element_names.extend(\n        [\n            f\"drift{i}1\",\n            f\"S{i}QF\",\n            f\"drift{i}2\",\n            f\"S{i}MUA\",\n            f\"drift{i}3\",\n            f\"S{i}SX\",\n            f\"drift{i}4\",\n            f\"S{i}QD\",\n            f\"drift{i}5\",\n            f\"S{i}MUB\",\n            f\"drift{i}6\",\n        ][:: -1 if i % 2 else 1]\n    )\n    elements.extend(\n        [\n            xt.Drift(length=0.7),\n            xt.Multipole(length=0.3, knl=[0, +0.63], ksl=[0, 0]),\n            xt.Drift(length=0.7),\n            xt.Multipole(\n                length=0.5, knl=[np.pi / n], hxl=[np.random.choice([-1, +1]) * np.pi / n]\n            ),\n            xt.Drift(length=0.4),\n            xt.Multipole(length=0.2, knl=[0, 0, 0.5 * np.sin(2 * np.pi * (i / n))]),\n            xt.Drift(length=0.3),\n            xt.Multipole(length=0.3, knl=[0, -0.48], ksl=[0, 0]),  # -0.4\n            xt.Drift(length=0.7),\n            xt.Multipole(\n                length=0.5, knl=[np.pi / n], hxl=[np.random.choice([-1, +1]) * np.pi / n]\n            ),\n            xt.Drift(length=2.2),\n        ][:: -1 if i % 2 else 1]\n    )\nelements.append(xt.LimitRect(min_x=-0.01, max_x=0.01, min_y=-np.inf, max_y=np.inf))\nelement_names.append(\"APERTURE\")\nline = xt.Line(elements=elements, element_names=element_names)\n\nline.particle_ref = xp.Particles(mass0=xp.PROTON_MASS_EV, q0=1, p0c=1e9)\ntracker = xt.Tracker(line=line)",
+      "names": [
+        {
+          "import_components": [
+            "xtrack",
+            "Drift"
+          ],
+          "code_str": "xt.Drift",
+          "lineno": 23,
+          "end_lineno": 23,
+          "context": "none",
+          "resolved_location": "xtrack.Drift"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Multipole"
+          ],
+          "code_str": "xt.Multipole",
+          "lineno": 24,
+          "end_lineno": 24,
+          "context": "none",
+          "resolved_location": "xtrack.Multipole"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Drift"
+          ],
+          "code_str": "xt.Drift",
+          "lineno": 25,
+          "end_lineno": 25,
+          "context": "none",
+          "resolved_location": "xtrack.Drift"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "pi"
+          ],
+          "code_str": "np.pi",
+          "lineno": 27,
+          "end_lineno": 27,
+          "context": "none",
+          "resolved_location": "numpy.pi"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "random",
+            "choice"
+          ],
+          "code_str": "np.random.choice",
+          "lineno": 27,
+          "end_lineno": 27,
+          "context": "none",
+          "resolved_location": "numpy.random.choice"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "pi"
+          ],
+          "code_str": "np.pi",
+          "lineno": 27,
+          "end_lineno": 27,
+          "context": "none",
+          "resolved_location": "numpy.pi"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Multipole"
+          ],
+          "code_str": "xt.Multipole",
+          "lineno": 26,
+          "end_lineno": 26,
+          "context": "none",
+          "resolved_location": "xtrack.Multipole"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Drift"
+          ],
+          "code_str": "xt.Drift",
+          "lineno": 29,
+          "end_lineno": 29,
+          "context": "none",
+          "resolved_location": "xtrack.Drift"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "pi"
+          ],
+          "code_str": "np.pi",
+          "lineno": 30,
+          "end_lineno": 30,
+          "context": "none",
+          "resolved_location": "numpy.pi"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "sin"
+          ],
+          "code_str": "np.sin",
+          "lineno": 30,
+          "end_lineno": 30,
+          "context": "none",
+          "resolved_location": "numpy.sin"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Multipole"
+          ],
+          "code_str": "xt.Multipole",
+          "lineno": 30,
+          "end_lineno": 30,
+          "context": "none",
+          "resolved_location": "xtrack.Multipole"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Drift"
+          ],
+          "code_str": "xt.Drift",
+          "lineno": 31,
+          "end_lineno": 31,
+          "context": "none",
+          "resolved_location": "xtrack.Drift"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Multipole"
+          ],
+          "code_str": "xt.Multipole",
+          "lineno": 32,
+          "end_lineno": 32,
+          "context": "none",
+          "resolved_location": "xtrack.Multipole"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Drift"
+          ],
+          "code_str": "xt.Drift",
+          "lineno": 33,
+          "end_lineno": 33,
+          "context": "none",
+          "resolved_location": "xtrack.Drift"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "pi"
+          ],
+          "code_str": "np.pi",
+          "lineno": 35,
+          "end_lineno": 35,
+          "context": "none",
+          "resolved_location": "numpy.pi"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "random",
+            "choice"
+          ],
+          "code_str": "np.random.choice",
+          "lineno": 35,
+          "end_lineno": 35,
+          "context": "none",
+          "resolved_location": "numpy.random.choice"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "pi"
+          ],
+          "code_str": "np.pi",
+          "lineno": 35,
+          "end_lineno": 35,
+          "context": "none",
+          "resolved_location": "numpy.pi"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Multipole"
+          ],
+          "code_str": "xt.Multipole",
+          "lineno": 34,
+          "end_lineno": 34,
+          "context": "none",
+          "resolved_location": "xtrack.Multipole"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Drift"
+          ],
+          "code_str": "xt.Drift",
+          "lineno": 37,
+          "end_lineno": 37,
+          "context": "none",
+          "resolved_location": "xtrack.Drift"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "inf"
+          ],
+          "code_str": "np.inf",
+          "lineno": 40,
+          "end_lineno": 40,
+          "context": "none",
+          "resolved_location": "numpy.inf"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "inf"
+          ],
+          "code_str": "np.inf",
+          "lineno": 40,
+          "end_lineno": 40,
+          "context": "none",
+          "resolved_location": "numpy.inf"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "LimitRect"
+          ],
+          "code_str": "xt.LimitRect",
+          "lineno": 40,
+          "end_lineno": 40,
+          "context": "none",
+          "resolved_location": "xtrack.LimitRect"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Line"
+          ],
+          "code_str": "xt.Line",
+          "lineno": 42,
+          "end_lineno": 42,
+          "context": "none",
+          "resolved_location": "xtrack.Line"
+        },
+        {
+          "import_components": [
+            "xpart",
+            "Particles"
+          ],
+          "code_str": "xp.Particles",
+          "lineno": 44,
+          "end_lineno": 44,
+          "context": "none",
+          "resolved_location": "xpart.Particles"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Tracker"
+          ],
+          "code_str": "xt.Tracker",
+          "lineno": 45,
+          "end_lineno": 45,
+          "context": "none",
+          "resolved_location": "xtrack.Tracker"
+        }
+      ],
+      "example": {
+        "document": "examples/line",
+        "ref_id": "beamline",
+        "headings": [
+          "Beamline"
+        ]
+      },
+      "doc_lineno": 40002
+    },
+    {
+      "source": "survey = tracker.survey()",
+      "names": [],
+      "example": {
+        "document": "examples/line",
+        "ref_id": "survey",
+        "headings": [
+          "Beamline",
+          "Survey"
+        ]
+      },
+      "doc_lineno": 70002
+    },
+    {
+      "source": "plot = xplt.FloorPlot(survey, line, labels=\"S.Q.\")\nplot.add_scale()",
+      "names": [
+        {
+          "import_components": [
+            "xplt",
+            "FloorPlot"
+          ],
+          "code_str": "xplt.FloorPlot",
+          "lineno": 1,
+          "end_lineno": 1,
+          "context": "none",
+          "resolved_location": "xplt.line.FloorPlot"
+        },
+        {
+          "import_components": [
+            "xplt",
+            "FloorPlot",
+            "()"
+          ],
+          "code_str": "plot",
+          "lineno": 1,
+          "end_lineno": 1,
+          "context": "none",
+          "resolved_location": "xplt.line.FloorPlot"
+        },
+        {
+          "import_components": [
+            "xplt",
+            "FloorPlot",
+            "()",
+            "add_scale"
+          ],
+          "code_str": "plot.add_scale",
+          "lineno": 2,
+          "end_lineno": 2,
+          "context": "none",
+          "resolved_location": "xplt.line.FloorPlot.add_scale"
+        }
+      ],
+      "example": {
+        "document": "examples/line",
+        "ref_id": "survey",
+        "headings": [
+          "Beamline",
+          "Survey"
+        ]
+      },
+      "doc_lineno": 80002
+    },
+    {
+      "source": "plot = xplt.KnlPlot(line)",
+      "names": [
+        {
+          "import_components": [
+            "xplt",
+            "KnlPlot"
+          ],
+          "code_str": "xplt.KnlPlot",
+          "lineno": 1,
+          "end_lineno": 1,
+          "context": "none",
+          "resolved_location": "xplt.line.KnlPlot"
+        },
+        {
+          "import_components": [
+            "xplt",
+            "KnlPlot",
+            "()"
+          ],
+          "code_str": "plot",
+          "lineno": 1,
+          "end_lineno": 1,
+          "context": "none",
+          "resolved_location": "xplt.line.KnlPlot"
+        }
+      ],
+      "example": {
+        "document": "examples/line",
+        "ref_id": "multipole-strength",
+        "headings": [
+          "Beamline",
+          "Multipole strength"
+        ]
+      },
+      "doc_lineno": 110002
+    }
+  ],
+  "examples/phasespace": [
+    {
+      "source": "import xtrack as xt\nimport xpart as xp\nimport xplt\nimport numpy as np\n\nnp.random.seed(43543557)",
+      "names": [
+        {
+          "import_components": [
+            "xplt"
+          ],
+          "code_str": "xplt",
+          "lineno": 3,
+          "end_lineno": 3,
+          "context": "import_target",
+          "resolved_location": "xplt"
+        },
+        {
+          "import_components": [
+            "numpy"
+          ],
+          "code_str": "numpy",
+          "lineno": 4,
+          "end_lineno": 4,
+          "context": "import_target",
+          "resolved_location": "numpy"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "random",
+            "seed"
+          ],
+          "code_str": "np.random.seed",
+          "lineno": 6,
+          "end_lineno": 6,
+          "context": "none",
+          "resolved_location": "numpy.random.seed"
+        }
+      ],
+      "example": {
+        "document": "examples/phasespace",
+        "ref_id": "phasespace",
+        "headings": [
+          "Phasespace"
+        ]
+      },
+      "doc_lineno": 30002
+    },
+    {
+      "source": "## Generate a simple 6-fold symmetric FODO lattice\nn = 6\nfodo = [\n    xt.Multipole(length=0.2, knl=[0, +0.2], ksl=[0, 0]),\n    xt.Drift(length=1.0),\n    xt.Multipole(length=0.2, knl=[0, -0.2], ksl=[0, 0]),\n    xt.Drift(length=1.0),\n    xt.Multipole(length=1.0, knl=[2 * np.pi / n], hxl=[2 * np.pi / n]),\n    xt.Drift(length=1.0),\n]\nline = xt.Line(elements=n * fodo)\ntracker = xt.Tracker(line=line)",
+      "names": [
+        {
+          "import_components": [
+            "xtrack",
+            "Multipole"
+          ],
+          "code_str": "xt.Multipole",
+          "lineno": 4,
+          "end_lineno": 4,
+          "context": "none",
+          "resolved_location": "xtrack.Multipole"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Drift"
+          ],
+          "code_str": "xt.Drift",
+          "lineno": 5,
+          "end_lineno": 5,
+          "context": "none",
+          "resolved_location": "xtrack.Drift"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Multipole"
+          ],
+          "code_str": "xt.Multipole",
+          "lineno": 6,
+          "end_lineno": 6,
+          "context": "none",
+          "resolved_location": "xtrack.Multipole"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Drift"
+          ],
+          "code_str": "xt.Drift",
+          "lineno": 7,
+          "end_lineno": 7,
+          "context": "none",
+          "resolved_location": "xtrack.Drift"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "pi"
+          ],
+          "code_str": "np.pi",
+          "lineno": 8,
+          "end_lineno": 8,
+          "context": "none",
+          "resolved_location": "numpy.pi"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "pi"
+          ],
+          "code_str": "np.pi",
+          "lineno": 8,
+          "end_lineno": 8,
+          "context": "none",
+          "resolved_location": "numpy.pi"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Multipole"
+          ],
+          "code_str": "xt.Multipole",
+          "lineno": 8,
+          "end_lineno": 8,
+          "context": "none",
+          "resolved_location": "xtrack.Multipole"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Drift"
+          ],
+          "code_str": "xt.Drift",
+          "lineno": 9,
+          "end_lineno": 9,
+          "context": "none",
+          "resolved_location": "xtrack.Drift"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Line"
+          ],
+          "code_str": "xt.Line",
+          "lineno": 11,
+          "end_lineno": 11,
+          "context": "none",
+          "resolved_location": "xtrack.Line"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Tracker"
+          ],
+          "code_str": "xt.Tracker",
+          "lineno": 12,
+          "end_lineno": 12,
+          "context": "none",
+          "resolved_location": "xtrack.Tracker"
+        }
+      ],
+      "example": {
+        "document": "examples/phasespace",
+        "ref_id": "phasespace",
+        "headings": [
+          "Phasespace"
+        ]
+      },
+      "doc_lineno": 40002
+    },
+    {
+      "source": "## Generate particles\nline.particle_ref = xp.Particles(mass0=xp.PROTON_MASS_EV, q0=1, p0c=1e9)\nnparticles = int(1e4)\n\n# Transverse distribution (gaussian)\nnorm_emitt_x = 2e-6  # normalized 1-sigma emittance in m*rad (=beta*gamma*emitt_x)\nnorm_emitt_y = 1e-6  # normalized 1-sigma emittance in m*rad (=beta*gamma*emitt_y)\nx, px = xp.generate_2D_gaussian(nparticles)\ny, py = xp.generate_2D_gaussian(nparticles)\n\n# Longitudinal distribution (coasting beam)\nrel_momentum_spread = 1e-4  # relative momentum spread ( P/p0 - 1 )\nzeta = line.get_length() * np.random.uniform(-0.5, 0.5, nparticles)\ndelta = rel_momentum_spread * xp.generate_2D_gaussian(nparticles)[0]\n\nparticles = xp.build_particles(\n    tracker=tracker,\n    particle_ref=line.particle_ref,\n    x_norm=x,\n    px_norm=px,\n    nemitt_x=norm_emitt_x,\n    y_norm=y,\n    py_norm=py,\n    nemitt_y=norm_emitt_y,\n    method=\"4d\",  # for twiss (default is 6d, won't work without a cavity)\n    zeta=zeta,\n    delta=delta,\n)",
+      "names": [
+        {
+          "import_components": [
+            "xpart",
+            "Particles"
+          ],
+          "code_str": "xp.Particles",
+          "lineno": 2,
+          "end_lineno": 2,
+          "context": "none",
+          "resolved_location": "xpart.Particles"
+        },
+        {
+          "import_components": [
+            "xpart",
+            "generate_2D_gaussian"
+          ],
+          "code_str": "xp.generate_2D_gaussian",
+          "lineno": 8,
+          "end_lineno": 8,
+          "context": "none",
+          "resolved_location": "xpart.generate_2D_gaussian"
+        },
+        {
+          "import_components": [
+            "xpart",
+            "generate_2D_gaussian"
+          ],
+          "code_str": "xp.generate_2D_gaussian",
+          "lineno": 9,
+          "end_lineno": 9,
+          "context": "none",
+          "resolved_location": "xpart.generate_2D_gaussian"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "random",
+            "uniform"
+          ],
+          "code_str": "np.random.uniform",
+          "lineno": 13,
+          "end_lineno": 13,
+          "context": "none",
+          "resolved_location": "numpy.random.uniform"
+        },
+        {
+          "import_components": [
+            "xpart",
+            "generate_2D_gaussian"
+          ],
+          "code_str": "xp.generate_2D_gaussian",
+          "lineno": 14,
+          "end_lineno": 14,
+          "context": "none",
+          "resolved_location": "xpart.generate_2D_gaussian"
+        },
+        {
+          "import_components": [
+            "xpart",
+            "build_particles"
+          ],
+          "code_str": "xp.build_particles",
+          "lineno": 16,
+          "end_lineno": 16,
+          "context": "none",
+          "resolved_location": "xpart.build_particles"
+        }
+      ],
+      "example": {
+        "document": "examples/phasespace",
+        "ref_id": "phasespace",
+        "headings": [
+          "Phasespace"
+        ]
+      },
+      "doc_lineno": 50002
+    },
+    {
+      "source": "plot = xplt.PhaseSpacePlot(particles)",
+      "names": [
+        {
+          "import_components": [
+            "xplt",
+            "PhaseSpacePlot"
+          ],
+          "code_str": "xplt.PhaseSpacePlot",
+          "lineno": 1,
+          "end_lineno": 1,
+          "context": "none",
+          "resolved_location": "xplt.phasespace.PhaseSpacePlot"
+        },
+        {
+          "import_components": [
+            "xplt",
+            "PhaseSpacePlot",
+            "()"
+          ],
+          "code_str": "plot",
+          "lineno": 1,
+          "end_lineno": 1,
+          "context": "none",
+          "resolved_location": "xplt.phasespace.PhaseSpacePlot"
+        }
+      ],
+      "example": {
+        "document": "examples/phasespace",
+        "ref_id": "default-phasespace-plot",
+        "headings": [
+          "Phasespace",
+          "Default phasespace plot"
+        ]
+      },
+      "doc_lineno": 80002
+    },
+    {
+      "source": "plot = xplt.PhaseSpacePlot(\n    particles,\n    kind=\"x,y,x-y\",\n    plot=\"scatter\",\n    scatter_kwargs=dict(alpha=0.2),  # scatter plot with semi-transparent color\n    projections=False,  # No projections onto axes\n    display_units=dict(p=\"urad\"),  # p as shorthand for px and py\n    mean=True,  # show mean cross for all\n    std=[True, None, True],  # show std ellipse for first and last\n    percentiles=[[90], [70, 80, 90], None],  # show some percentile ellipses\n)\nplot.ax[2].set(title=\"Transverse profile\");",
+      "names": [
+        {
+          "import_components": [
+            "xplt",
+            "PhaseSpacePlot"
+          ],
+          "code_str": "xplt.PhaseSpacePlot",
+          "lineno": 1,
+          "end_lineno": 1,
+          "context": "none",
+          "resolved_location": "xplt.phasespace.PhaseSpacePlot"
+        },
+        {
+          "import_components": [
+            "xplt",
+            "PhaseSpacePlot",
+            "()"
+          ],
+          "code_str": "plot",
+          "lineno": 1,
+          "end_lineno": 1,
+          "context": "none",
+          "resolved_location": "xplt.phasespace.PhaseSpacePlot"
+        }
+      ],
+      "example": {
+        "document": "examples/phasespace",
+        "ref_id": "customisation",
+        "headings": [
+          "Phasespace",
+          "Customisation"
+        ]
+      },
+      "doc_lineno": 120002
+    },
+    {
+      "source": "tw = tracker.twiss(\n    method=\"4d\",\n    at_s=np.unique(particles.s),  # twiss at location of particles\n)",
+      "names": [
+        {
+          "import_components": [
+            "numpy",
+            "unique"
+          ],
+          "code_str": "np.unique",
+          "lineno": 3,
+          "end_lineno": 3,
+          "context": "none",
+          "resolved_location": "numpy.unique"
+        }
+      ],
+      "example": {
+        "document": "examples/phasespace",
+        "ref_id": "normalized-coordinates",
+        "headings": [
+          "Phasespace",
+          "Normalized coordinates"
+        ]
+      },
+      "doc_lineno": 180002
+    },
+    {
+      "source": "plot = xplt.PhaseSpacePlot(particles, kind=\"X,Y\", twiss=tw, std=True)",
+      "names": [
+        {
+          "import_components": [
+            "xplt",
+            "PhaseSpacePlot"
+          ],
+          "code_str": "xplt.PhaseSpacePlot",
+          "lineno": 1,
+          "end_lineno": 1,
+          "context": "none",
+          "resolved_location": "xplt.phasespace.PhaseSpacePlot"
+        },
+        {
+          "import_components": [
+            "xplt",
+            "PhaseSpacePlot",
+            "()"
+          ],
+          "code_str": "plot",
+          "lineno": 1,
+          "end_lineno": 1,
+          "context": "none",
+          "resolved_location": "xplt.phasespace.PhaseSpacePlot"
+        }
+      ],
+      "example": {
+        "document": "examples/phasespace",
+        "ref_id": "normalized-coordinates",
+        "headings": [
+          "Phasespace",
+          "Normalized coordinates"
+        ]
+      },
+      "doc_lineno": 200002
+    },
+    {
+      "source": "plot = xplt.PhaseSpacePlot(\n    particles, \"x,y,z\", color=\"\u0398x,Jy,t\", cmap=\"viridis_r\", cbar_loc=\"inside upper right\", twiss=tw\n)",
+      "names": [
+        {
+          "import_components": [
+            "xplt",
+            "PhaseSpacePlot"
+          ],
+          "code_str": "xplt.PhaseSpacePlot",
+          "lineno": 1,
+          "end_lineno": 1,
+          "context": "none",
+          "resolved_location": "xplt.phasespace.PhaseSpacePlot"
+        },
+        {
+          "import_components": [
+            "xplt",
+            "PhaseSpacePlot",
+            "()"
+          ],
+          "code_str": "plot",
+          "lineno": 1,
+          "end_lineno": 1,
+          "context": "none",
+          "resolved_location": "xplt.phasespace.PhaseSpacePlot"
+        }
+      ],
+      "example": {
+        "document": "examples/phasespace",
+        "ref_id": "color-by-3rd-coordinate",
+        "headings": [
+          "Phasespace",
+          "Color by 3rd coordinate"
+        ]
+      },
+      "doc_lineno": 230002
+    },
+    {
+      "source": "tracker.track(particles, num_turns=100, turn_by_turn_monitor=True)",
+      "names": [],
+      "example": {
+        "document": "examples/phasespace",
+        "ref_id": "monitor-data",
+        "headings": [
+          "Phasespace",
+          "Monitor data"
+        ]
+      },
+      "doc_lineno": 260002
+    },
+    {
+      "source": "plot = xplt.PhaseSpacePlot(\n    tracker.record_last_track,\n    mask=(slice(None), 83),  # select all particles and turn 83\n    mean=(1, 1, 0),\n    std=(1, 1, 0),\n)\nplot.fig.suptitle(\"Particle distribution for a single turn\");",
+      "names": [
+        {
+          "import_components": [
+            "xplt",
+            "PhaseSpacePlot"
+          ],
+          "code_str": "xplt.PhaseSpacePlot",
+          "lineno": 1,
+          "end_lineno": 1,
+          "context": "none",
+          "resolved_location": "xplt.phasespace.PhaseSpacePlot"
+        },
+        {
+          "import_components": [
+            "xplt",
+            "PhaseSpacePlot",
+            "()"
+          ],
+          "code_str": "plot",
+          "lineno": 1,
+          "end_lineno": 1,
+          "context": "none",
+          "resolved_location": "xplt.phasespace.PhaseSpacePlot"
+        }
+      ],
+      "example": {
+        "document": "examples/phasespace",
+        "ref_id": "monitor-data",
+        "headings": [
+          "Phasespace",
+          "Monitor data"
+        ]
+      },
+      "doc_lineno": 280002
+    },
+    {
+      "source": "plot = xplt.PhaseSpacePlot(\n    tracker.record_last_track,\n    kind=\"y,y\",\n    titles=(\"First turn\", \"Last turn\"),\n    sharex=\"all\",\n    sharey=\"all\",\n    masks=[  # select particles at first and last turn\n        (slice(500), 0),\n        (slice(500), -1),\n    ],\n    projections=\"x\",\n    mean=True,\n    std=True,\n)\nplot.ax[1].set(ylabel=None);",
+      "names": [
+        {
+          "import_components": [
+            "xplt",
+            "PhaseSpacePlot"
+          ],
+          "code_str": "xplt.PhaseSpacePlot",
+          "lineno": 1,
+          "end_lineno": 1,
+          "context": "none",
+          "resolved_location": "xplt.phasespace.PhaseSpacePlot"
+        },
+        {
+          "import_components": [
+            "xplt",
+            "PhaseSpacePlot",
+            "()"
+          ],
+          "code_str": "plot",
+          "lineno": 1,
+          "end_lineno": 1,
+          "context": "none",
+          "resolved_location": "xplt.phasespace.PhaseSpacePlot"
+        }
+      ],
+      "example": {
+        "document": "examples/phasespace",
+        "ref_id": "monitor-data",
+        "headings": [
+          "Phasespace",
+          "Monitor data"
+        ]
+      },
+      "doc_lineno": 310002
+    },
+    {
+      "source": "plot = xplt.PhaseSpacePlot(\n    tracker.record_last_track,\n    mask=([17, 18, 21], slice(None)),  # select particles 17,18,21 and all turns\n    projections=False,\n)",
+      "names": [
+        {
+          "import_components": [
+            "xplt",
+            "PhaseSpacePlot"
+          ],
+          "code_str": "xplt.PhaseSpacePlot",
+          "lineno": 1,
+          "end_lineno": 1,
+          "context": "none",
+          "resolved_location": "xplt.phasespace.PhaseSpacePlot"
+        },
+        {
+          "import_components": [
+            "xplt",
+            "PhaseSpacePlot",
+            "()"
+          ],
+          "code_str": "plot",
+          "lineno": 1,
+          "end_lineno": 1,
+          "context": "none",
+          "resolved_location": "xplt.phasespace.PhaseSpacePlot"
+        }
+      ],
+      "example": {
+        "document": "examples/phasespace",
+        "ref_id": "monitor-data",
+        "headings": [
+          "Phasespace",
+          "Monitor data"
+        ]
+      },
+      "doc_lineno": 330002
+    },
+    {
+      "source": "particle_indices = (17, 18, 21)\nax = None\n\nfor particle_i in particle_indices:\n    plot = xplt.PhaseSpacePlot(\n        tracker.record_last_track,\n        mask=(particle_i, slice(None)),  # select particle i and all turns\n        kind=\"x\",\n        titles=(\"Trace of single particles\",),\n        ax=ax,  # draw on same plot as before\n    )\n    ax = plot.ax\n\nax.legend(particle_indices, title=\"Particle\");",
+      "names": [
+        {
+          "import_components": [
+            "xplt",
+            "PhaseSpacePlot"
+          ],
+          "code_str": "xplt.PhaseSpacePlot",
+          "lineno": 5,
+          "end_lineno": 5,
+          "context": "none",
+          "resolved_location": "xplt.phasespace.PhaseSpacePlot"
+        },
+        {
+          "import_components": [
+            "xplt",
+            "PhaseSpacePlot",
+            "()"
+          ],
+          "code_str": "plot",
+          "lineno": 5,
+          "end_lineno": 5,
+          "context": "none",
+          "resolved_location": "xplt.phasespace.PhaseSpacePlot"
+        }
+      ],
+      "example": {
+        "document": "examples/phasespace",
+        "ref_id": "monitor-data",
+        "headings": [
+          "Phasespace",
+          "Monitor data"
+        ]
+      },
+      "doc_lineno": 350002
+    }
+  ],
+  "examples/timestructure": [
+    {
+      "source": "import xtrack as xt\nimport xpart as xp\nimport xplt\nimport numpy as np\nfrom matplotlib.animation import FuncAnimation\nfrom IPython.display import display, HTML\n\nnp.random.seed(43543557)",
+      "names": [
+        {
+          "import_components": [
+            "xplt"
+          ],
+          "code_str": "xplt",
+          "lineno": 3,
+          "end_lineno": 3,
+          "context": "import_target",
+          "resolved_location": "xplt"
+        },
+        {
+          "import_components": [
+            "numpy"
+          ],
+          "code_str": "numpy",
+          "lineno": 4,
+          "end_lineno": 4,
+          "context": "import_target",
+          "resolved_location": "numpy"
+        },
+        {
+          "import_components": [
+            "matplotlib",
+            "animation"
+          ],
+          "code_str": "matplotlib.animation",
+          "lineno": 5,
+          "end_lineno": 5,
+          "context": "import_from",
+          "resolved_location": "matplotlib.animation"
+        },
+        {
+          "import_components": [
+            "matplotlib",
+            "animation",
+            "FuncAnimation"
+          ],
+          "code_str": "FuncAnimation",
+          "lineno": 5,
+          "end_lineno": 5,
+          "context": "import_target",
+          "resolved_location": "matplotlib.animation.FuncAnimation"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "random",
+            "seed"
+          ],
+          "code_str": "np.random.seed",
+          "lineno": 8,
+          "end_lineno": 8,
+          "context": "none",
+          "resolved_location": "numpy.random.seed"
+        }
+      ],
+      "example": {
+        "document": "examples/timestructure",
+        "ref_id": "particle-timestructure",
+        "headings": [
+          "Particle timestructure"
+        ]
+      },
+      "doc_lineno": 30002
+    },
+    {
+      "source": "## Generate a simple 6-fold symmetric FODO lattice\nn = 6\nelements = []\nfor i in range(n):\n    elements.extend(\n        [\n            xt.Drift(length=0.7),\n            xt.Multipole(length=0.3, knl=[0, +0.63], ksl=[0, 0]),\n            xt.Drift(length=0.7),\n            xt.Multipole(length=0.5, knl=[np.pi / n], hxl=[np.pi / n]),\n            xt.Drift(length=0.4),\n            # xt.Multipole(length=0.2, knl=[0, 0, 0.5 * np.sin(2 * np.pi * (i / n))]),\n            xt.Drift(length=0.3),\n            xt.Multipole(length=0.3, knl=[0, -0.48], ksl=[0, 0]),  # -0.4\n            xt.Drift(length=0.7),\n            xt.Multipole(length=0.5, knl=[np.pi / n], hxl=[np.pi / n]),\n            xt.Drift(length=2.2),\n        ][:: -1 if i % 2 else 1]\n    )\n\nline = xt.Line(elements=elements)\n\n## Create the tracker\ntracker = xt.Tracker(line=line)",
+      "names": [
+        {
+          "import_components": [
+            "xtrack",
+            "Drift"
+          ],
+          "code_str": "xt.Drift",
+          "lineno": 7,
+          "end_lineno": 7,
+          "context": "none",
+          "resolved_location": "xtrack.Drift"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Multipole"
+          ],
+          "code_str": "xt.Multipole",
+          "lineno": 8,
+          "end_lineno": 8,
+          "context": "none",
+          "resolved_location": "xtrack.Multipole"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Drift"
+          ],
+          "code_str": "xt.Drift",
+          "lineno": 9,
+          "end_lineno": 9,
+          "context": "none",
+          "resolved_location": "xtrack.Drift"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "pi"
+          ],
+          "code_str": "np.pi",
+          "lineno": 10,
+          "end_lineno": 10,
+          "context": "none",
+          "resolved_location": "numpy.pi"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "pi"
+          ],
+          "code_str": "np.pi",
+          "lineno": 10,
+          "end_lineno": 10,
+          "context": "none",
+          "resolved_location": "numpy.pi"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Multipole"
+          ],
+          "code_str": "xt.Multipole",
+          "lineno": 10,
+          "end_lineno": 10,
+          "context": "none",
+          "resolved_location": "xtrack.Multipole"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Drift"
+          ],
+          "code_str": "xt.Drift",
+          "lineno": 11,
+          "end_lineno": 11,
+          "context": "none",
+          "resolved_location": "xtrack.Drift"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Drift"
+          ],
+          "code_str": "xt.Drift",
+          "lineno": 13,
+          "end_lineno": 13,
+          "context": "none",
+          "resolved_location": "xtrack.Drift"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Multipole"
+          ],
+          "code_str": "xt.Multipole",
+          "lineno": 14,
+          "end_lineno": 14,
+          "context": "none",
+          "resolved_location": "xtrack.Multipole"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Drift"
+          ],
+          "code_str": "xt.Drift",
+          "lineno": 15,
+          "end_lineno": 15,
+          "context": "none",
+          "resolved_location": "xtrack.Drift"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "pi"
+          ],
+          "code_str": "np.pi",
+          "lineno": 16,
+          "end_lineno": 16,
+          "context": "none",
+          "resolved_location": "numpy.pi"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "pi"
+          ],
+          "code_str": "np.pi",
+          "lineno": 16,
+          "end_lineno": 16,
+          "context": "none",
+          "resolved_location": "numpy.pi"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Multipole"
+          ],
+          "code_str": "xt.Multipole",
+          "lineno": 16,
+          "end_lineno": 16,
+          "context": "none",
+          "resolved_location": "xtrack.Multipole"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Drift"
+          ],
+          "code_str": "xt.Drift",
+          "lineno": 17,
+          "end_lineno": 17,
+          "context": "none",
+          "resolved_location": "xtrack.Drift"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Line"
+          ],
+          "code_str": "xt.Line",
+          "lineno": 21,
+          "end_lineno": 21,
+          "context": "none",
+          "resolved_location": "xtrack.Line"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Tracker"
+          ],
+          "code_str": "xt.Tracker",
+          "lineno": 24,
+          "end_lineno": 24,
+          "context": "none",
+          "resolved_location": "xtrack.Tracker"
+        }
+      ],
+      "example": {
+        "document": "examples/timestructure",
+        "ref_id": "particle-timestructure",
+        "headings": [
+          "Particle timestructure"
+        ]
+      },
+      "doc_lineno": 40002
+    },
+    {
+      "source": "## Generate particles\nline.particle_ref = xp.Particles(mass0=xp.PROTON_MASS_EV, q0=1, p0c=1e9)\nnparticles = int(1e3)\n\n# Transverse distribution (gaussian)\nnorm_emitt_x = 2e-6  # normalized 1-sigma emittance in m*rad (=beta*gamma*emitt_x)\nnorm_emitt_y = 1e-6  # normalized 1-sigma emittance in m*rad (=beta*gamma*emitt_y)\nx, px = xp.generate_2D_gaussian(nparticles)\ny, py = xp.generate_2D_gaussian(nparticles)\n\n# Longitudinal distribution (coasting beam)\nrel_momentum_spread = 1e-4  # relative momentum spread ( P/p0 - 1 )\nzeta = line.get_length() * np.random.uniform(-0.5, 0.5, nparticles)\ndelta = rel_momentum_spread * xp.generate_2D_gaussian(nparticles)[0]\n\nparticles = xp.build_particles(\n    tracker=tracker,\n    particle_ref=line.particle_ref,\n    x_norm=x,\n    px_norm=px,\n    nemitt_x=norm_emitt_x,\n    y_norm=y,\n    py_norm=py,\n    nemitt_y=norm_emitt_y,\n    method=\"4d\",  # for twiss (default is 6d, won't work without a cavity)\n    zeta=zeta,\n    delta=delta,\n)",
+      "names": [
+        {
+          "import_components": [
+            "xpart",
+            "Particles"
+          ],
+          "code_str": "xp.Particles",
+          "lineno": 2,
+          "end_lineno": 2,
+          "context": "none",
+          "resolved_location": "xpart.Particles"
+        },
+        {
+          "import_components": [
+            "xpart",
+            "generate_2D_gaussian"
+          ],
+          "code_str": "xp.generate_2D_gaussian",
+          "lineno": 8,
+          "end_lineno": 8,
+          "context": "none",
+          "resolved_location": "xpart.generate_2D_gaussian"
+        },
+        {
+          "import_components": [
+            "xpart",
+            "generate_2D_gaussian"
+          ],
+          "code_str": "xp.generate_2D_gaussian",
+          "lineno": 9,
+          "end_lineno": 9,
+          "context": "none",
+          "resolved_location": "xpart.generate_2D_gaussian"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "random",
+            "uniform"
+          ],
+          "code_str": "np.random.uniform",
+          "lineno": 13,
+          "end_lineno": 13,
+          "context": "none",
+          "resolved_location": "numpy.random.uniform"
+        },
+        {
+          "import_components": [
+            "xpart",
+            "generate_2D_gaussian"
+          ],
+          "code_str": "xp.generate_2D_gaussian",
+          "lineno": 14,
+          "end_lineno": 14,
+          "context": "none",
+          "resolved_location": "xpart.generate_2D_gaussian"
+        },
+        {
+          "import_components": [
+            "xpart",
+            "build_particles"
+          ],
+          "code_str": "xp.build_particles",
+          "lineno": 16,
+          "end_lineno": 16,
+          "context": "none",
+          "resolved_location": "xpart.build_particles"
+        }
+      ],
+      "example": {
+        "document": "examples/timestructure",
+        "ref_id": "particle-timestructure",
+        "headings": [
+          "Particle timestructure"
+        ]
+      },
+      "doc_lineno": 50002
+    },
+    {
+      "source": "## Twiss\ntw = tracker.twiss(method=\"4d\")\n\n## Track\ntracker.track(particles, num_turns=100, turn_by_turn_monitor=True)",
+      "names": [],
+      "example": {
+        "document": "examples/timestructure",
+        "ref_id": "particle-timestructure",
+        "headings": [
+          "Particle timestructure"
+        ]
+      },
+      "doc_lineno": 60002
+    },
+    {
+      "source": "plot = xplt.TimePlot(particles, \"x+y\", circumference=line.get_length())",
+      "names": [
+        {
+          "import_components": [
+            "xplt",
+            "TimePlot"
+          ],
+          "code_str": "xplt.TimePlot",
+          "lineno": 1,
+          "end_lineno": 1,
+          "context": "none",
+          "resolved_location": "xplt.timestructure.TimePlot"
+        },
+        {
+          "import_components": [
+            "xplt",
+            "TimePlot",
+            "()"
+          ],
+          "code_str": "plot",
+          "lineno": 1,
+          "end_lineno": 1,
+          "context": "none",
+          "resolved_location": "xplt.timestructure.TimePlot"
+        }
+      ],
+      "example": {
+        "document": "examples/timestructure",
+        "ref_id": "time-based-plot",
+        "headings": [
+          "Particle timestructure",
+          "Time based plot"
+        ]
+      },
+      "doc_lineno": 90002
+    },
+    {
+      "source": "plot = xplt.TimeBinPlot(particles, \"count,rate-cumulative\", circumference=line.get_length())",
+      "names": [
+        {
+          "import_components": [
+            "xplt",
+            "TimeBinPlot"
+          ],
+          "code_str": "xplt.TimeBinPlot",
+          "lineno": 1,
+          "end_lineno": 1,
+          "context": "none",
+          "resolved_location": "xplt.timestructure.TimeBinPlot"
+        },
+        {
+          "import_components": [
+            "xplt",
+            "TimeBinPlot",
+            "()"
+          ],
+          "code_str": "plot",
+          "lineno": 1,
+          "end_lineno": 1,
+          "context": "none",
+          "resolved_location": "xplt.timestructure.TimeBinPlot"
+        }
+      ],
+      "example": {
+        "document": "examples/timestructure",
+        "ref_id": "binned-time-series",
+        "headings": [
+          "Particle timestructure",
+          "Binned time series"
+        ]
+      },
+      "doc_lineno": 120002
+    },
+    {
+      "source": "plot = xplt.TimeVariationPlot(particles, \"cv-duty\", circumference=line.get_length())\nplot.axis_for(0).set(ylim=(0, 10))\nplot.axis_for(twin=1).set(ylim=(0, 1));",
+      "names": [
+        {
+          "import_components": [
+            "xplt",
+            "TimeVariationPlot"
+          ],
+          "code_str": "xplt.TimeVariationPlot",
+          "lineno": 1,
+          "end_lineno": 1,
+          "context": "none",
+          "resolved_location": "xplt.timestructure.TimeVariationPlot"
+        },
+        {
+          "import_components": [
+            "xplt",
+            "TimeVariationPlot",
+            "()"
+          ],
+          "code_str": "plot",
+          "lineno": 1,
+          "end_lineno": 1,
+          "context": "none",
+          "resolved_location": "xplt.timestructure.TimeVariationPlot"
+        },
+        {
+          "import_components": [
+            "xplt",
+            "TimeVariationPlot",
+            "()",
+            "axis_for"
+          ],
+          "code_str": "plot.axis_for",
+          "lineno": 2,
+          "end_lineno": 2,
+          "context": "none",
+          "resolved_location": "xplt.timestructure.TimeVariationPlot.axis_for"
+        },
+        {
+          "import_components": [
+            "xplt",
+            "TimeVariationPlot",
+            "()",
+            "axis_for"
+          ],
+          "code_str": "plot.axis_for",
+          "lineno": 3,
+          "end_lineno": 3,
+          "context": "none",
+          "resolved_location": "xplt.timestructure.TimeVariationPlot.axis_for"
+        }
+      ],
+      "example": {
+        "document": "examples/timestructure",
+        "ref_id": "binned-time-series",
+        "headings": [
+          "Particle timestructure",
+          "Binned time series"
+        ]
+      },
+      "doc_lineno": 140002
+    },
+    {
+      "source": "plot = xplt.TimeIntervalPlot(particles, tmax=1e-9, log=False, circumference=10)",
+      "names": [
+        {
+          "import_components": [
+            "xplt",
+            "TimeIntervalPlot"
+          ],
+          "code_str": "xplt.TimeIntervalPlot",
+          "lineno": 1,
+          "end_lineno": 1,
+          "context": "none",
+          "resolved_location": "xplt.timestructure.TimeIntervalPlot"
+        },
+        {
+          "import_components": [
+            "xplt",
+            "TimeIntervalPlot",
+            "()"
+          ],
+          "code_str": "plot",
+          "lineno": 1,
+          "end_lineno": 1,
+          "context": "none",
+          "resolved_location": "xplt.timestructure.TimeIntervalPlot"
+        }
+      ],
+      "example": {
+        "document": "examples/timestructure",
+        "ref_id": "consecutive-particle-delay",
+        "headings": [
+          "Particle timestructure",
+          "Consecutive particle delay"
+        ]
+      },
+      "doc_lineno": 170002
+    },
+    {
+      "source": "plot = xplt.TimeFFTPlot(particles, fmax=1e11, log=False, circumference=line.get_length())",
+      "names": [
+        {
+          "import_components": [
+            "xplt",
+            "TimeFFTPlot"
+          ],
+          "code_str": "xplt.TimeFFTPlot",
+          "lineno": 1,
+          "end_lineno": 1,
+          "context": "none",
+          "resolved_location": "xplt.timestructure.TimeFFTPlot"
+        },
+        {
+          "import_components": [
+            "xplt",
+            "TimeFFTPlot",
+            "()"
+          ],
+          "code_str": "plot",
+          "lineno": 1,
+          "end_lineno": 1,
+          "context": "none",
+          "resolved_location": "xplt.timestructure.TimeFFTPlot"
+        }
+      ],
+      "example": {
+        "document": "examples/timestructure",
+        "ref_id": "frequency-domain",
+        "headings": [
+          "Particle timestructure",
+          "Frequency domain"
+        ]
+      },
+      "doc_lineno": 200002
+    },
+    {
+      "source": "mask = (\n    0,\n    None,\n)  # select only a single particle, otherwise the tune signal is very small due to insufficient coherence of our beam\n\nplot = xplt.TimeFFTPlot(\n    tracker.record_last_track, \"x+y\", relative=True, mask=mask, circumference=line.get_length()\n)\n\nfor Q in (tw.qx, tw.qy):\n    q, h = np.modf(Q)\n    plot.ax.axvline(0 + q, ls=\"--\", color=\"gray\", zorder=-1)\n    plot.ax.axvline(1 - q, ls=\":\", color=\"gray\", zorder=-1)",
+      "names": [
+        {
+          "import_components": [
+            "xplt",
+            "TimeFFTPlot"
+          ],
+          "code_str": "xplt.TimeFFTPlot",
+          "lineno": 6,
+          "end_lineno": 6,
+          "context": "none",
+          "resolved_location": "xplt.timestructure.TimeFFTPlot"
+        },
+        {
+          "import_components": [
+            "xplt",
+            "TimeFFTPlot",
+            "()"
+          ],
+          "code_str": "plot",
+          "lineno": 6,
+          "end_lineno": 6,
+          "context": "none",
+          "resolved_location": "xplt.timestructure.TimeFFTPlot"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "modf"
+          ],
+          "code_str": "np.modf",
+          "lineno": 11,
+          "end_lineno": 11,
+          "context": "none",
+          "resolved_location": "numpy.modf"
+        }
+      ],
+      "example": {
+        "document": "examples/timestructure",
+        "ref_id": "tune-spectrum",
+        "headings": [
+          "Particle timestructure",
+          "Frequency domain",
+          "Tune spectrum"
+        ]
+      },
+      "doc_lineno": 230002
+    },
+    {
+      "source": "from matplotlib import pyplot as plt\n\nfig, ax = plt.subplots()\nfor xy in \"xy\":\n    p = getattr(tracker.record_last_track, xy)[0, :]\n    freq = np.fft.rfftfreq(len(p))\n    mag = np.abs(np.fft.rfft(p))\n    ax.plot(freq, mag, label=xy)\n    ax.axvline(np.modf(getattr(tw, \"q\" + xy))[0], ls=\"--\", color=\"gray\", zorder=-1)\nax.legend()\nax.set(xlabel=\"$f/f_\\\\mathrm{rev}$\", ylabel=\"FFT / a.u.\", xlim=(0, 1));",
+      "names": [
+        {
+          "import_components": [
+            "matplotlib"
+          ],
+          "code_str": "matplotlib",
+          "lineno": 1,
+          "end_lineno": 1,
+          "context": "import_from",
+          "resolved_location": "matplotlib"
+        },
+        {
+          "import_components": [
+            "matplotlib",
+            "pyplot"
+          ],
+          "code_str": "pyplot",
+          "lineno": 1,
+          "end_lineno": 1,
+          "context": "import_target",
+          "resolved_location": "matplotlib.pyplot"
+        },
+        {
+          "import_components": [
+            "matplotlib",
+            "pyplot",
+            "subplots"
+          ],
+          "code_str": "plt.subplots",
+          "lineno": 3,
+          "end_lineno": 3,
+          "context": "none",
+          "resolved_location": "matplotlib.pyplot.subplots"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "fft",
+            "rfftfreq"
+          ],
+          "code_str": "np.fft.rfftfreq",
+          "lineno": 6,
+          "end_lineno": 6,
+          "context": "none",
+          "resolved_location": "numpy.fft.rfftfreq"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "fft",
+            "rfft"
+          ],
+          "code_str": "np.fft.rfft",
+          "lineno": 7,
+          "end_lineno": 7,
+          "context": "none",
+          "resolved_location": "numpy.fft.rfft"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "modf"
+          ],
+          "code_str": "np.modf",
+          "lineno": 9,
+          "end_lineno": 9,
+          "context": "none",
+          "resolved_location": "numpy.modf"
+        }
+      ],
+      "example": {
+        "document": "examples/timestructure",
+        "ref_id": "tune-spectrum",
+        "headings": [
+          "Particle timestructure",
+          "Frequency domain",
+          "Tune spectrum"
+        ]
+      },
+      "doc_lineno": 250002
+    }
+  ],
+  "examples/twiss": [
+    {
+      "source": "import xtrack as xt\nimport xpart as xp\nimport xplt\nimport numpy as np",
+      "names": [
+        {
+          "import_components": [
+            "xplt"
+          ],
+          "code_str": "xplt",
+          "lineno": 3,
+          "end_lineno": 3,
+          "context": "import_target",
+          "resolved_location": "xplt"
+        },
+        {
+          "import_components": [
+            "numpy"
+          ],
+          "code_str": "numpy",
+          "lineno": 4,
+          "end_lineno": 4,
+          "context": "import_target",
+          "resolved_location": "numpy"
+        }
+      ],
+      "example": {
+        "document": "examples/twiss",
+        "ref_id": "twiss",
+        "headings": [
+          "Twiss"
+        ]
+      },
+      "doc_lineno": 30002
+    },
+    {
+      "source": "## Generate a simple 6-fold symmetric FODO lattice\nn = 6\nelements = []\nfor i in range(n):\n    elements.extend(\n        [\n            xt.Drift(length=0.7),\n            xt.Multipole(length=0.3, knl=[0, +0.63], ksl=[0, 0]),\n            xt.Drift(length=0.7),\n            xt.Multipole(length=0.5, knl=[np.pi / n], hxl=[np.pi / n]),\n            xt.Drift(length=0.4),\n            xt.Multipole(length=0.2, knl=[0, 0, 0.5 * np.sin(2 * np.pi * (i / n))]),\n            xt.Drift(length=0.3),\n            xt.Multipole(length=0.3, knl=[0, -0.48], ksl=[0, 0]),  # -0.4\n            xt.Drift(length=0.7),\n            xt.Multipole(length=0.5, knl=[np.pi / n], hxl=[np.pi / n]),\n            xt.Drift(length=2.2),\n        ][:: -1 if i % 2 else 1]\n    )\nelements.append(xt.LimitRect(min_x=-0.01, max_x=0.01, min_y=-np.inf, max_y=np.inf))\nline = xt.Line(elements=elements)\n\nline.particle_ref = xp.Particles(mass0=xp.PROTON_MASS_EV, q0=1, p0c=1e9)\ntracker = xt.Tracker(line=line)",
+      "names": [
+        {
+          "import_components": [
+            "xtrack",
+            "Drift"
+          ],
+          "code_str": "xt.Drift",
+          "lineno": 7,
+          "end_lineno": 7,
+          "context": "none",
+          "resolved_location": "xtrack.Drift"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Multipole"
+          ],
+          "code_str": "xt.Multipole",
+          "lineno": 8,
+          "end_lineno": 8,
+          "context": "none",
+          "resolved_location": "xtrack.Multipole"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Drift"
+          ],
+          "code_str": "xt.Drift",
+          "lineno": 9,
+          "end_lineno": 9,
+          "context": "none",
+          "resolved_location": "xtrack.Drift"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "pi"
+          ],
+          "code_str": "np.pi",
+          "lineno": 10,
+          "end_lineno": 10,
+          "context": "none",
+          "resolved_location": "numpy.pi"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "pi"
+          ],
+          "code_str": "np.pi",
+          "lineno": 10,
+          "end_lineno": 10,
+          "context": "none",
+          "resolved_location": "numpy.pi"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Multipole"
+          ],
+          "code_str": "xt.Multipole",
+          "lineno": 10,
+          "end_lineno": 10,
+          "context": "none",
+          "resolved_location": "xtrack.Multipole"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Drift"
+          ],
+          "code_str": "xt.Drift",
+          "lineno": 11,
+          "end_lineno": 11,
+          "context": "none",
+          "resolved_location": "xtrack.Drift"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "pi"
+          ],
+          "code_str": "np.pi",
+          "lineno": 12,
+          "end_lineno": 12,
+          "context": "none",
+          "resolved_location": "numpy.pi"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "sin"
+          ],
+          "code_str": "np.sin",
+          "lineno": 12,
+          "end_lineno": 12,
+          "context": "none",
+          "resolved_location": "numpy.sin"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Multipole"
+          ],
+          "code_str": "xt.Multipole",
+          "lineno": 12,
+          "end_lineno": 12,
+          "context": "none",
+          "resolved_location": "xtrack.Multipole"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Drift"
+          ],
+          "code_str": "xt.Drift",
+          "lineno": 13,
+          "end_lineno": 13,
+          "context": "none",
+          "resolved_location": "xtrack.Drift"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Multipole"
+          ],
+          "code_str": "xt.Multipole",
+          "lineno": 14,
+          "end_lineno": 14,
+          "context": "none",
+          "resolved_location": "xtrack.Multipole"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Drift"
+          ],
+          "code_str": "xt.Drift",
+          "lineno": 15,
+          "end_lineno": 15,
+          "context": "none",
+          "resolved_location": "xtrack.Drift"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "pi"
+          ],
+          "code_str": "np.pi",
+          "lineno": 16,
+          "end_lineno": 16,
+          "context": "none",
+          "resolved_location": "numpy.pi"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "pi"
+          ],
+          "code_str": "np.pi",
+          "lineno": 16,
+          "end_lineno": 16,
+          "context": "none",
+          "resolved_location": "numpy.pi"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Multipole"
+          ],
+          "code_str": "xt.Multipole",
+          "lineno": 16,
+          "end_lineno": 16,
+          "context": "none",
+          "resolved_location": "xtrack.Multipole"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Drift"
+          ],
+          "code_str": "xt.Drift",
+          "lineno": 17,
+          "end_lineno": 17,
+          "context": "none",
+          "resolved_location": "xtrack.Drift"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "inf"
+          ],
+          "code_str": "np.inf",
+          "lineno": 20,
+          "end_lineno": 20,
+          "context": "none",
+          "resolved_location": "numpy.inf"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "inf"
+          ],
+          "code_str": "np.inf",
+          "lineno": 20,
+          "end_lineno": 20,
+          "context": "none",
+          "resolved_location": "numpy.inf"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "LimitRect"
+          ],
+          "code_str": "xt.LimitRect",
+          "lineno": 20,
+          "end_lineno": 20,
+          "context": "none",
+          "resolved_location": "xtrack.LimitRect"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Line"
+          ],
+          "code_str": "xt.Line",
+          "lineno": 21,
+          "end_lineno": 21,
+          "context": "none",
+          "resolved_location": "xtrack.Line"
+        },
+        {
+          "import_components": [
+            "xpart",
+            "Particles"
+          ],
+          "code_str": "xp.Particles",
+          "lineno": 23,
+          "end_lineno": 23,
+          "context": "none",
+          "resolved_location": "xpart.Particles"
+        },
+        {
+          "import_components": [
+            "xtrack",
+            "Tracker"
+          ],
+          "code_str": "xt.Tracker",
+          "lineno": 24,
+          "end_lineno": 24,
+          "context": "none",
+          "resolved_location": "xtrack.Tracker"
+        }
+      ],
+      "example": {
+        "document": "examples/twiss",
+        "ref_id": "twiss",
+        "headings": [
+          "Twiss"
+        ]
+      },
+      "doc_lineno": 40002
+    },
+    {
+      "source": "tw = tracker.twiss(\n    method=\"4d\",\n    at_s=np.linspace(0, line.get_length(), 500),\n)\nprint(f\"qx: {tw.qx:g}\")\nprint(f\"qy: {tw.qy:g}\")",
+      "names": [
+        {
+          "import_components": [
+            "numpy",
+            "linspace"
+          ],
+          "code_str": "np.linspace",
+          "lineno": 3,
+          "end_lineno": 3,
+          "context": "none",
+          "resolved_location": "numpy.linspace"
+        }
+      ],
+      "example": {
+        "document": "examples/twiss",
+        "ref_id": "twiss",
+        "headings": [
+          "Twiss"
+        ]
+      },
+      "doc_lineno": 60002
+    },
+    {
+      "source": "plot = xplt.TwissPlot(tw, line=line)",
+      "names": [
+        {
+          "import_components": [
+            "xplt",
+            "TwissPlot"
+          ],
+          "code_str": "xplt.TwissPlot",
+          "lineno": 1,
+          "end_lineno": 1,
+          "context": "none",
+          "resolved_location": "xplt.twiss.TwissPlot"
+        },
+        {
+          "import_components": [
+            "xplt",
+            "TwissPlot",
+            "()"
+          ],
+          "code_str": "plot",
+          "lineno": 1,
+          "end_lineno": 1,
+          "context": "none",
+          "resolved_location": "xplt.twiss.TwissPlot"
+        }
+      ],
+      "example": {
+        "document": "examples/twiss",
+        "ref_id": "default-twiss-plot",
+        "headings": [
+          "Twiss",
+          "Default twiss plot"
+        ]
+      },
+      "doc_lineno": 90002
+    },
+    {
+      "source": "print(\", \".join(sorted(tw.keys(), key=lambda a: a.lower())))",
+      "names": [],
+      "example": {
+        "document": "examples/twiss",
+        "ref_id": "customisation",
+        "headings": [
+          "Twiss",
+          "Customisation"
+        ]
+      },
+      "doc_lineno": 120002
+    },
+    {
+      "source": "plot = xplt.TwissPlot(tw, figsize=(6, 5), kind=\"bet,mux+muy,dx\", display_units=dict(d=\"dm\"))\n\n# adjust some axes\nplot.ax[0].set(title=\"Twiss plot example\", ylim=(0, 14))\nplot.ax[0].legend(loc=\"right\")\n\n# adjust line layout\nplot.artists[1][0][0].set_ls(\"--\")\nplot.ax[1].legend();",
+      "names": [
+        {
+          "import_components": [
+            "xplt",
+            "TwissPlot"
+          ],
+          "code_str": "xplt.TwissPlot",
+          "lineno": 1,
+          "end_lineno": 1,
+          "context": "none",
+          "resolved_location": "xplt.twiss.TwissPlot"
+        },
+        {
+          "import_components": [
+            "xplt",
+            "TwissPlot",
+            "()"
+          ],
+          "code_str": "plot",
+          "lineno": 1,
+          "end_lineno": 1,
+          "context": "none",
+          "resolved_location": "xplt.twiss.TwissPlot"
+        }
+      ],
+      "example": {
+        "document": "examples/twiss",
+        "ref_id": "customisation",
+        "headings": [
+          "Twiss",
+          "Customisation"
+        ]
+      },
+      "doc_lineno": 140002
+    }
+  ],
+  "index": [],
+  "quickstart": [],
+  "usage": [
+    {
+      "source": "import xplt\nimport numpy as np\nimport pandas as pd\n\n# Dictionary\nparticles = dict(\n    x = np.random.normal(size=int(1e5)),  # in m\n    px = np.random.normal(size=int(1e5)),  # in rad\n    a = np.random.normal(size=int(1e5)),  # custom attribute\n)\nxplt.PhaseSpacePlot(particles, kind='x-px', data_unit=dict(a=\"km\"))\n\n# Pandas DataFrame\ndf = pd.DataFrame(particles)\nxplt.PhaseSpacePlot(df, kind='x-px')\n\n...\n",
+      "names": [
+        {
+          "import_components": [
+            "xplt"
+          ],
+          "code_str": "xplt",
+          "lineno": 1,
+          "end_lineno": 1,
+          "context": "import_target",
+          "resolved_location": "xplt"
+        },
+        {
+          "import_components": [
+            "numpy"
+          ],
+          "code_str": "numpy",
+          "lineno": 2,
+          "end_lineno": 2,
+          "context": "import_target",
+          "resolved_location": "numpy"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "random",
+            "normal"
+          ],
+          "code_str": "np.random.normal",
+          "lineno": 7,
+          "end_lineno": 7,
+          "context": "none",
+          "resolved_location": "numpy.random.normal"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "random",
+            "normal"
+          ],
+          "code_str": "np.random.normal",
+          "lineno": 8,
+          "end_lineno": 8,
+          "context": "none",
+          "resolved_location": "numpy.random.normal"
+        },
+        {
+          "import_components": [
+            "numpy",
+            "random",
+            "normal"
+          ],
+          "code_str": "np.random.normal",
+          "lineno": 9,
+          "end_lineno": 9,
+          "context": "none",
+          "resolved_location": "numpy.random.normal"
+        },
+        {
+          "import_components": [
+            "xplt",
+            "PhaseSpacePlot"
+          ],
+          "code_str": "xplt.PhaseSpacePlot",
+          "lineno": 11,
+          "end_lineno": 11,
+          "context": "none",
+          "resolved_location": "xplt.phasespace.PhaseSpacePlot"
+        },
+        {
+          "import_components": [
+            "xplt",
+            "PhaseSpacePlot"
+          ],
+          "code_str": "xplt.PhaseSpacePlot",
+          "lineno": 15,
+          "end_lineno": 15,
+          "context": "none",
+          "resolved_location": "xplt.phasespace.PhaseSpacePlot"
+        }
+      ],
+      "example": {
+        "document": "usage",
+        "ref_id": "user-guide",
+        "headings": [
+          "User guide"
+        ]
+      },
+      "doc_lineno": 22
+    }
+  ]
+}

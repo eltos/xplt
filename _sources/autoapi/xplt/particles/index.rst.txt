@@ -1,0 +1,351 @@
+:py:mod:`xplt.particles`
+========================
+
+.. py:module:: xplt.particles
+
+.. autoapi-nested-parse::
+
+   Methods for plotting phase space distributions
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   xplt.particles.ParticlesPlot
+   xplt.particles.XParticlePlot
+
+
+
+
+.. py:class:: ParticlesPlot(particles=None, kind='x+y', as_function_of='at_turn', *, mask=None, plot_kwargs=None, sort_by=None, grid=True, ax=None, data_units=None, display_units=None, twiss=None, beta=None, frev=None, circumference=None, wrap_zeta=False, **subplots_kwargs)
+
+   Bases: :py:obj:`XParticlePlot`
+
+   
+   A plot of particle properties as function of another property.
+
+   :param particles: Particles data to plot.
+   :param kind: Defines the properties to plot.
+                This can be a separated string or a nested list or a mixture of both where
+                the first list level (or separator ``,``) determines the subplots,
+                the second list level (or separator ``-``) determines any twinx-axes,
+                and the third list level (or separator ``+``) determines plots on the same axis.
+   :type kind: str or list
+   :param as_function_of: The property to plot as function of.
+   :type as_function_of: str
+   :param mask: An index mask to select particles to plot. If None, all particles are plotted.
+   :param plot_kwargs: Keyword arguments passed to the plot function.
+   :type plot_kwargs: dict
+   :param sort_by: Sort the data by this property. Default is to sort by the ``as_function_of`` property.
+   :type sort_by: str or None
+   :param grid: If True, show grid lines.
+   :type grid: bool
+   :param ax: Axes to plot on. If None, a new figure is created.
+   :param data_units: Units of the data. If None, the units are determined from the data.
+   :type data_units: dict
+   :param display_units: Units to display the data in. If None, the units are determined from the data.
+   :type display_units: dict
+   :param twiss: Twiss parameters (alfx, alfy, betx and bety) to use for conversion to normalized phase space coordinates.
+   :type twiss: dict
+   :param beta: Relativistic beta of particles. Defaults to particles.beta0.
+   :type beta: float
+   :param frev: Revolution frequency of circular line for calculation of particle time.
+   :type frev: float
+   :param circumference: Path length of circular line if frev is not given. Defaults to twiss.circumference.
+   :type circumference: float
+   :param wrap_zeta: If set, wrap the zeta-coordinate plotted at the machine circumference. Set to
+                     True to wrap at the circumference or to a value to wrap at this value.
+   :type wrap_zeta: bool or float
+   :param subplots_kwargs: Keyword arguments passed to matplotlib.pyplot.subplots command when a new figure is created.
+
+   .. py:property:: axflat
+
+      Return a flat list of all primary axes
+
+   .. py:property:: circumference
+
+
+   .. py:method:: add_scale(ax, scale, label=None, *, vertical=False, width=0.01, padding=0.1, loc='auto', color='k', fontsize='x-small')
+      :staticmethod:
+
+      Add a scale patch (a yardstick or ruler)
+
+      :param ax: The axis to add it to.
+      :param scale: The size of the scale in data units.
+      :param label: A label for the scale.
+      :type label: str, optional
+      :param vertical: If true, make a vertical one (default is a horizontal one).
+      :type vertical: bool
+      :param width: The line width of the scale in axis units.
+      :type width: float
+      :param padding: The padding between the scale and the axis.
+      :type padding: float
+      :param loc: The location of the scale. Can be any of the usual matplotlib locations, e.g. 'auto', 'upper left', 'upper center', 'upper right', 'center left', 'center', 'center right', 'lower left', 'lower center, 'lower right'.
+      :type loc: str
+      :param color: Color for the patch.
+      :param fontsize: Font size of the label.
+
+      :returns: The artist added (an AnchoredOffsetbox).
+
+
+   .. py:method:: axis_for(subplot=0, twin=0)
+
+      Return the axis for a given flat subplot index and twin index
+
+
+   .. py:method:: beta(particles=None)
+
+      Get reference relativistic beta as float
+
+
+   .. py:method:: data_unit_for(p)
+
+      Return data unit for parameter
+
+
+   .. py:method:: display_unit_for(p)
+
+      Return display unit for parameter
+
+
+   .. py:method:: factor_for(p)
+
+      Return factor to convert parameter into display unit
+
+
+   .. py:method:: frev(particles=None)
+
+      Get reference revolution frequency
+
+
+   .. py:method:: label_for(*pp, unit=True)
+
+      Return label for list of parameters, joining where possible
+
+      :param pp: Parameter names
+      :param unit: Wheather to include unit
+
+
+   .. py:method:: plot_harmonics(ax, v, dv=0, *, n=20, scale_width=True, vertical=True, inverse=False, **plot_kwargs)
+      :staticmethod:
+
+      Add vertical lines or spans indicating the location of values or spans and their harmonics
+
+      Indicates the bands at the h-th harmonics for h = 1, 2, ..., n
+      - h * (v ± dv/2)      if scale_width and not inverse (default)
+      - h * v ± dv/2        if not scale_width and not inverse
+      - h / (v ± dv/2)      if inverse and scale_width
+      - 1 / ( v/h ± dv/2 )  if inverse and not scale_width
+
+      :param ax: Axis to plot onto.
+      :param v: Value or list of values.
+      :type v: float or list of float
+      :param dv: Width or list of widths centered around value(s).
+      :type dv: float or list of float, optional
+      :param n: Number of harmonics to plot.
+      :type n: int
+      :param scale_width: Whether to scale the width for higher harmonics or keep it constant.
+      :type scale_width: bool, optional
+      :param vertical: Plot vertical lines if true, horizontal otherweise.
+      :type vertical: bool
+      :param inverse: If true, plot harmonics of n/(v±dv) instead of n*(v±dv). Useful to plot frequency harmonics in time domain and vice-versa.
+      :type inverse: bool
+      :param plot_kwargs: Keyword arguments to be passed to plotting method
+
+
+   .. py:method:: save(fname, **kwargs)
+
+      Save the figure
+
+
+   .. py:method:: set_axis_ticks_angle(yaxis, minor=True, deg=False)
+      :staticmethod:
+
+      Set ticks locator and formatter to display an angle
+
+      This will set ticks at multiples or fractions of 180° or pi with appropriate labels
+
+      :param yaxis: The axis to format (ax.xaxis or ax.yaxis)
+      :param minor: If true (default), also set the minor locator
+      :type minor: bool
+      :param deg: If true, use angles in degree. If false (default), in radians.
+      :type deg: bool
+
+
+   .. py:method:: title(title, **kwargs)
+
+      Set figure title
+
+
+   .. py:method:: update(particles, mask=None, autoscale=False)
+
+      Update plot with new data
+
+      :param particles: Particles data to plot.
+      :param mask: An index mask to select particles to plot. If None, all particles are plotted.
+      :param autoscale: Whether or not to perform autoscaling on all axes.
+
+
+
+.. py:class:: XParticlePlot(*, data_units=None, display_units=None, twiss=None, beta=None, frev=None, circumference=None, wrap_zeta=False, **kwargs)
+
+   Bases: :py:obj:`xplt.base.XPlot`
+
+   
+   Base plotting class for particle data
+
+   In addition to the inherent particle properties (like ``x``, ``y``, ``px``, ``py``, ``zeta``, ``delta``, ...)
+   the following derived properties are supported (but may require passing of twiss etc.):
+
+   - Normalized coordinates: ``X``, ``Y``, ``Px``, ``Py``
+      |  :math:`X = x/\sqrt{\beta_x} = \sqrt{2J_x} \cos(\Theta_x)`
+      |  :math:`P_x = (\alpha_x x + \beta_x p_x)/\sqrt{\beta_x} = -\sqrt{2J_x} \sin(\Theta_x)`
+   - Action-angle coordinates: ``Jx``, ``Jy``, ``Θx``, ``Θy``
+      |  :math:`J_x = (X^2+P_x^2)/2`
+      |  :math:`\Theta_x = -\mathrm{atan2}(P_x, X)`
+   - Particle arrival time: ``t``
+      |  t = at_turn / frev - zeta / beta / c0
+
+   Prefix notation is also available, i.e. ``P`` for ``Px+Py`` or ``Θ`` for ``Θx+Θy``
+
+
+   :param data_units: Units of the data. If None, the units are determined from the data.
+   :type data_units: dict, optional
+   :param display_units: Units to display the data in. If None, the units are determined from the data.
+   :type display_units: dict, optional
+   :param twiss: Twiss parameters (alfx, alfy, betx and bety) to use for conversion to normalized phase space coordinates.
+   :type twiss: dict, optional
+   :param beta: Relativistic beta of particles. Defaults to particles.beta0.
+   :type beta: float, optional
+   :param frev: Revolution frequency of circular line for calculation of particle time.
+   :type frev: float, optional
+   :param circumference: Path length of circular line if frev is not given.
+   :type circumference: float, optional
+   :param wrap_zeta: If set, wrap the zeta-coordinate plotted at the machine circumference. Either pass the circumference directly or set this to True to use the circumference from twiss.
+
+   .. py:property:: axflat
+
+      Return a flat list of all primary axes
+
+   .. py:property:: circumference
+
+
+   .. py:method:: add_scale(ax, scale, label=None, *, vertical=False, width=0.01, padding=0.1, loc='auto', color='k', fontsize='x-small')
+      :staticmethod:
+
+      Add a scale patch (a yardstick or ruler)
+
+      :param ax: The axis to add it to.
+      :param scale: The size of the scale in data units.
+      :param label: A label for the scale.
+      :type label: str, optional
+      :param vertical: If true, make a vertical one (default is a horizontal one).
+      :type vertical: bool
+      :param width: The line width of the scale in axis units.
+      :type width: float
+      :param padding: The padding between the scale and the axis.
+      :type padding: float
+      :param loc: The location of the scale. Can be any of the usual matplotlib locations, e.g. 'auto', 'upper left', 'upper center', 'upper right', 'center left', 'center', 'center right', 'lower left', 'lower center, 'lower right'.
+      :type loc: str
+      :param color: Color for the patch.
+      :param fontsize: Font size of the label.
+
+      :returns: The artist added (an AnchoredOffsetbox).
+
+
+   .. py:method:: axis_for(subplot=0, twin=0)
+
+      Return the axis for a given flat subplot index and twin index
+
+
+   .. py:method:: beta(particles=None)
+
+      Get reference relativistic beta as float
+
+
+   .. py:method:: data_unit_for(p)
+
+      Return data unit for parameter
+
+
+   .. py:method:: display_unit_for(p)
+
+      Return display unit for parameter
+
+
+   .. py:method:: factor_for(p)
+
+      Return factor to convert parameter into display unit
+
+
+   .. py:method:: frev(particles=None)
+
+      Get reference revolution frequency
+
+
+   .. py:method:: label_for(*pp, unit=True)
+
+      Return label for list of parameters, joining where possible
+
+      :param pp: Parameter names
+      :param unit: Wheather to include unit
+
+
+   .. py:method:: plot_harmonics(ax, v, dv=0, *, n=20, scale_width=True, vertical=True, inverse=False, **plot_kwargs)
+      :staticmethod:
+
+      Add vertical lines or spans indicating the location of values or spans and their harmonics
+
+      Indicates the bands at the h-th harmonics for h = 1, 2, ..., n
+      - h * (v ± dv/2)      if scale_width and not inverse (default)
+      - h * v ± dv/2        if not scale_width and not inverse
+      - h / (v ± dv/2)      if inverse and scale_width
+      - 1 / ( v/h ± dv/2 )  if inverse and not scale_width
+
+      :param ax: Axis to plot onto.
+      :param v: Value or list of values.
+      :type v: float or list of float
+      :param dv: Width or list of widths centered around value(s).
+      :type dv: float or list of float, optional
+      :param n: Number of harmonics to plot.
+      :type n: int
+      :param scale_width: Whether to scale the width for higher harmonics or keep it constant.
+      :type scale_width: bool, optional
+      :param vertical: Plot vertical lines if true, horizontal otherweise.
+      :type vertical: bool
+      :param inverse: If true, plot harmonics of n/(v±dv) instead of n*(v±dv). Useful to plot frequency harmonics in time domain and vice-versa.
+      :type inverse: bool
+      :param plot_kwargs: Keyword arguments to be passed to plotting method
+
+
+   .. py:method:: save(fname, **kwargs)
+
+      Save the figure
+
+
+   .. py:method:: set_axis_ticks_angle(yaxis, minor=True, deg=False)
+      :staticmethod:
+
+      Set ticks locator and formatter to display an angle
+
+      This will set ticks at multiples or fractions of 180° or pi with appropriate labels
+
+      :param yaxis: The axis to format (ax.xaxis or ax.yaxis)
+      :param minor: If true (default), also set the minor locator
+      :type minor: bool
+      :param deg: If true, use angles in degree. If false (default), in radians.
+      :type deg: bool
+
+
+   .. py:method:: title(title, **kwargs)
+
+      Set figure title
+
+
+

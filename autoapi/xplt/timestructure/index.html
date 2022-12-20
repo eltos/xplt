@@ -1,0 +1,1908 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>xplt.timestructure &#8212; Xplt 0.3.0 documentation</title>
+  <script>
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+
+  
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-codeautolink.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'autoapi/xplt/timestructure/index';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="xplt.twiss" href="../twiss/index.html" />
+    <link rel="prev" title="xplt.phasespace" href="../phasespace/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="None">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+      
+<form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  </div>
+
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../../index.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+    <p class="title logo__title">Xplt 0.3.0 documentation</p>
+  
+</a>
+    
+  </div>
+
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../quickstart.html">
+                        Quickstart
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../usage.html">
+                        User guide
+                    </a>
+                </li>
+                
+
+                <li class="nav-item current active">
+                    <a class="nav-link" href="../../../api.html">
+                        API documentation
+                    </a>
+                </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      <div class="navbar-end-item navbar-end__search-button-container">
+        
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eltos/xplt" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/xplt" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-solid fa-cube"></i></span>
+            <label class="sr-only">PyPI</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+
+
+  
+  <div class="search-button-container--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+  </div>
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../quickstart.html">
+                        Quickstart
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../usage.html">
+                        User guide
+                    </a>
+                </li>
+                
+
+                <li class="nav-item current active">
+                    <a class="nav-link" href="../../../api.html">
+                        API documentation
+                    </a>
+                </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eltos/xplt" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/xplt" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-solid fa-cube"></i></span>
+            <label class="sr-only">PyPI</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+  <div class="sidebar-start-items sidebar-primary__section">
+    <div class="sidebar-start-items__item"><nav class="bd-links" id="bd-docs-nav" aria-label="Section navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+    Section Navigation
+  </p>
+  <div class="bd-toc-item navbar-nav">
+    <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xplt</span></code></a><input checked class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../base/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xplt.base</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../colors/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xplt.colors</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hooks/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xplt.hooks</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../line/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xplt.line</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../particles/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xplt.particles</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../phasespace/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xplt.phasespace</span></code></a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xplt.timestructure</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../twiss/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xplt.twiss</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../util/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xplt.util</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+</nav>
+    </div>
+  </div>
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+      </div>
+      <main class="bd-main">
+        
+        
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+            </div>
+            
+            
+            <article class="bd-article" role="main">
+              
+  <section id="module-xplt.timestructure">
+<span id="xplt-timestructure"></span><h1><a class="reference internal" href="#module-xplt.timestructure" title="xplt.timestructure"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xplt.timestructure</span></code></a><a class="headerlink" href="#module-xplt.timestructure" title="Permalink to this headline">#</a></h1>
+<p>Methods for plotting particle arrival times</p>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">#</a></h2>
+<section id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">#</a></h3>
+<table class="autosummary longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#xplt.timestructure.TimeBinPlot" title="xplt.timestructure.TimeBinPlot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeBinPlot</span></code></a></p></td>
+<td><p>A binned histogram plot of particles as function of times.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#xplt.timestructure.TimeFFTPlot" title="xplt.timestructure.TimeFFTPlot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeFFTPlot</span></code></a></p></td>
+<td><p>A frequency plot based on particle arrival times.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#xplt.timestructure.TimeIntervalPlot" title="xplt.timestructure.TimeIntervalPlot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeIntervalPlot</span></code></a></p></td>
+<td><p>A histogram plot of particle arrival intervals (i.e. delay between consecutive particles).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#xplt.timestructure.TimePlot" title="xplt.timestructure.TimePlot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimePlot</span></code></a></p></td>
+<td><p>A thin wrapper around the ParticlesPlot plotting data as function of time.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#xplt.timestructure.TimeVariationPlot" title="xplt.timestructure.TimeVariationPlot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeVariationPlot</span></code></a></p></td>
+<td><p>Plot for variability of particles arriving as function of arrival time</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">#</a></h3>
+<table class="autosummary longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#xplt.timestructure.binned_timeseries" title="xplt.timestructure.binned_timeseries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">binned_timeseries</span></code></a>(times, n[, what])</p></td>
+<td><p>Get binned timeseries with equally spaced time bins</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeBinPlot">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">xplt.timestructure.</span></span><span class="sig-name descname"><span class="pre">TimeBinPlot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">particles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'count'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bin_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bin_count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">relative</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">display_units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">twiss</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frev</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circumference</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrap_zeta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">subplots_kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/timestructure.py#L85-L266"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeBinPlot" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../particles/index.html#xplt.particles.XParticlePlot" title="xplt.particles.XParticlePlot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xplt.particles.XParticlePlot</span></code></a></p>
+<p>A binned histogram plot of particles as function of times.</p>
+<dl class="simple">
+<dt>The plot is based on the particle arrival time, which is:</dt><dd><ul class="simple">
+<li><p>For circular lines: at_turn / frev - zeta / beta / c0</p></li>
+<li><p>For linear lines: zeta / beta / c0</p></li>
+</ul>
+</dd>
+</dl>
+<p>The main purpose is to plot particle counts, but kind also accepts particle properties
+in which case the property is averaged over all particles falling into the bin.</p>
+<p>Useful to plot time structures of particles loss, such as spill structures.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> – Particles data to plot.</p></li>
+<li><p><strong>kind</strong> (<em>str</em><em>, </em><em>optional</em>) – What to plot as function of time. Can be ‘count’ (default),
+‘rate’, ‘cumulative’, or a particle property to average.</p></li>
+<li><p><strong>bin_time</strong> – Time bin width if bin_count is None.</p></li>
+<li><p><strong>bin_count</strong> – Number of bins if bin_time is None.</p></li>
+<li><p><strong>relative</strong> – If True, plot relative numbers normalized to total count.
+If what is a particle property, this has no effect.</p></li>
+<li><p><strong>mask</strong> – An index mask to select particles to plot. If None, all particles are plotted.</p></li>
+<li><p><strong>plot_kwargs</strong> – Keyword arguments passed to the plot function.</p></li>
+<li><p><strong>grid</strong> – If True, show grid lines.</p></li>
+<li><p><strong>ax</strong> – Axes to plot on. If None, a new figure is created.</p></li>
+<li><p><strong>data_units</strong> (<em>dict</em><em>, </em><em>optional</em>) – Units of the data. If None, the units are determined from the data.</p></li>
+<li><p><strong>display_units</strong> (<em>dict</em><em>, </em><em>optional</em>) – Units to display the data in. If None, the units are determined from the data.</p></li>
+<li><p><strong>twiss</strong> (<em>dict</em><em>, </em><em>optional</em>) – Twiss parameters (alfx, alfy, betx and bety) to use for conversion to normalized phase space coordinates.</p></li>
+<li><p><strong>beta</strong> (<em>float</em><em>, </em><em>optional</em>) – Relativistic beta of particles. Defaults to particles.beta0.</p></li>
+<li><p><strong>frev</strong> (<em>float</em><em>, </em><em>optional</em>) – Revolution frequency of circular line for calculation of particle time.</p></li>
+<li><p><strong>circumference</strong> (<em>float</em><em>, </em><em>optional</em>) – Path length of circular line if frev is not given.</p></li>
+<li><p><strong>wrap_zeta</strong> – If set, wrap the zeta-coordinate plotted at the machine circumference. Either pass the circumference directly or set this to True to use the circumference from twiss.</p></li>
+<li><p><strong>subplots_kwargs</strong> – Keyword arguments passed to matplotlib.pyplot.subplots command when a new figure is created.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeBinPlot.axflat">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">axflat</span></span><a class="headerlink" href="#xplt.timestructure.TimeBinPlot.axflat" title="Permalink to this definition">#</a></dt>
+<dd><p>Return a flat list of all primary axes</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeBinPlot.circumference">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">circumference</span></span><a class="headerlink" href="#xplt.timestructure.TimeBinPlot.circumference" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeBinPlot.add_scale">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">add_scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertical</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'k'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'x-small'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L507-L556"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeBinPlot.add_scale" title="Permalink to this definition">#</a></dt>
+<dd><p>Add a scale patch (a yardstick or ruler)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ax</strong> – The axis to add it to.</p></li>
+<li><p><strong>scale</strong> – The size of the scale in data units.</p></li>
+<li><p><strong>label</strong> (<em>str</em><em>, </em><em>optional</em>) – A label for the scale.</p></li>
+<li><p><strong>vertical</strong> (<em>bool</em>) – If true, make a vertical one (default is a horizontal one).</p></li>
+<li><p><strong>width</strong> (<em>float</em>) – The line width of the scale in axis units.</p></li>
+<li><p><strong>padding</strong> (<em>float</em>) – The padding between the scale and the axis.</p></li>
+<li><p><strong>loc</strong> (<em>str</em>) – The location of the scale. Can be any of the usual matplotlib locations, e.g. ‘auto’, ‘upper left’, ‘upper center’, ‘upper right’, ‘center left’, ‘center’, ‘center right’, ‘lower left’, ‘lower center, ‘lower right’.</p></li>
+<li><p><strong>color</strong> – Color for the patch.</p></li>
+<li><p><strong>fontsize</strong> – Font size of the label.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The artist added (an AnchoredOffsetbox).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeBinPlot.axis_for">
+<span class="sig-name descname"><span class="pre">axis_for</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subplot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">twin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L301-L303"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeBinPlot.axis_for" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the axis for a given flat subplot index and twin index</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeBinPlot.beta">
+<span class="sig-name descname"><span class="pre">beta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">particles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/particles.py#L91-L109"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeBinPlot.beta" title="Permalink to this definition">#</a></dt>
+<dd><p>Get reference relativistic beta as float</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeBinPlot.data_unit_for">
+<span class="sig-name descname"><span class="pre">data_unit_for</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/timestructure.py#L249-L254"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeBinPlot.data_unit_for" title="Permalink to this definition">#</a></dt>
+<dd><p>Return data unit for parameter</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeBinPlot.display_unit_for">
+<span class="sig-name descname"><span class="pre">display_unit_for</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L356-L363"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeBinPlot.display_unit_for" title="Permalink to this definition">#</a></dt>
+<dd><p>Return display unit for parameter</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeBinPlot.factor_for">
+<span class="sig-name descname"><span class="pre">factor_for</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/particles.py#L177-L200"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeBinPlot.factor_for" title="Permalink to this definition">#</a></dt>
+<dd><p>Return factor to convert parameter into display unit</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeBinPlot.frev">
+<span class="sig-name descname"><span class="pre">frev</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">particles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/particles.py#L111-L117"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeBinPlot.frev" title="Permalink to this definition">#</a></dt>
+<dd><p>Get reference revolution frequency</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeBinPlot.label_for">
+<span class="sig-name descname"><span class="pre">label_for</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">pp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L391-L441"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeBinPlot.label_for" title="Permalink to this definition">#</a></dt>
+<dd><p>Return label for list of parameters, joining where possible</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pp</strong> – Parameter names</p></li>
+<li><p><strong>unit</strong> – Wheather to include unit</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeBinPlot.plot_harmonics">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">plot_harmonics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertical</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inverse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">plot_kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L460-L505"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeBinPlot.plot_harmonics" title="Permalink to this definition">#</a></dt>
+<dd><p>Add vertical lines or spans indicating the location of values or spans and their harmonics</p>
+<p>Indicates the bands at the h-th harmonics for h = 1, 2, …, n
+- h * (v ± dv/2)      if scale_width and not inverse (default)
+- h * v ± dv/2        if not scale_width and not inverse
+- h / (v ± dv/2)      if inverse and scale_width
+- 1 / ( v/h ± dv/2 )  if inverse and not scale_width</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ax</strong> – Axis to plot onto.</p></li>
+<li><p><strong>v</strong> (<em>float</em><em> or </em><em>list of float</em>) – Value or list of values.</p></li>
+<li><p><strong>dv</strong> (<em>float</em><em> or </em><em>list of float</em><em>, </em><em>optional</em>) – Width or list of widths centered around value(s).</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – Number of harmonics to plot.</p></li>
+<li><p><strong>scale_width</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to scale the width for higher harmonics or keep it constant.</p></li>
+<li><p><strong>vertical</strong> (<em>bool</em>) – Plot vertical lines if true, horizontal otherweise.</p></li>
+<li><p><strong>inverse</strong> (<em>bool</em>) – If true, plot harmonics of n/(v±dv) instead of n*(v±dv). Useful to plot frequency harmonics in time domain and vice-versa.</p></li>
+<li><p><strong>plot_kwargs</strong> – Keyword arguments to be passed to plotting method</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeBinPlot.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L334-L336"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeBinPlot.save" title="Permalink to this definition">#</a></dt>
+<dd><p>Save the figure</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeBinPlot.set_axis_ticks_angle">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">set_axis_ticks_angle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">yaxis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L443-L458"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeBinPlot.set_axis_ticks_angle" title="Permalink to this definition">#</a></dt>
+<dd><p>Set ticks locator and formatter to display an angle</p>
+<p>This will set ticks at multiples or fractions of 180° or pi with appropriate labels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>yaxis</strong> – The axis to format (ax.xaxis or ax.yaxis)</p></li>
+<li><p><strong>minor</strong> (<em>bool</em>) – If true (default), also set the minor locator</p></li>
+<li><p><strong>deg</strong> (<em>bool</em>) – If true, use angles in degree. If false (default), in radians.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeBinPlot.title">
+<span class="sig-name descname"><span class="pre">title</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L338-L340"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeBinPlot.title" title="Permalink to this definition">#</a></dt>
+<dd><p>Set figure title</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeBinPlot.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">particles</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autoscale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/timestructure.py#L181-L247"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeBinPlot.update" title="Permalink to this definition">#</a></dt>
+<dd><p>Update plot with new data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> – Particles data to plot.</p></li>
+<li><p><strong>mask</strong> – An index mask to select particles to plot. If None, all particles are plotted.</p></li>
+<li><p><strong>autoscale</strong> – Whether or not to perform autoscaling on all axes.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeFFTPlot">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">xplt.timestructure.</span></span><span class="sig-name descname"><span class="pre">TimeFFTPlot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">particles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'count'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">relative</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaling</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'amplitude'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">display_units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">twiss</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frev</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circumference</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrap_zeta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">subplots_kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/timestructure.py#L269-L479"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeFFTPlot" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../particles/index.html#xplt.particles.XParticlePlot" title="xplt.particles.XParticlePlot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xplt.particles.XParticlePlot</span></code></a></p>
+<p>A frequency plot based on particle arrival times.</p>
+<dl class="simple">
+<dt>The particle arrival time is:</dt><dd><ul class="simple">
+<li><p>For circular lines: at_turn / frev - zeta / beta / c0</p></li>
+<li><p>For linear lines: zeta / beta / c0</p></li>
+</ul>
+</dd>
+</dl>
+<p>From the particle arrival times (non-equally distributed timestamps), a timeseries with equally
+spaced time bins is derived. The time bin size is determined based on fmax and performance considerations.
+By default, the binned property is the number of particles arriving within the bin time (what=’count’).
+Alternatively, a particle property may be specified (e.g. what=’x’), in which case that property is
+averaged over all particles arriving in the respective bin. The FFT is then computed over the timeseries.</p>
+<p>Useful to plot time structures of particles loss, such as spill structures.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> – Particles data to plot.</p></li>
+<li><p><strong>kind</strong> (<em>str</em><em>, </em><em>optional</em>) – What to make the FFT over. Can be ‘count’ (default), or a particle property (in which case averaging applies).</p></li>
+<li><p><strong>fmax</strong> (<em>float</em>) – Maximum frequency (in Hz) to plot.</p></li>
+<li><p><strong>relative</strong> (<em>bool</em>) – If True, plot relative frequencies (f/frev) instead of absolute frequencies (f).</p></li>
+<li><p><strong>log</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, plot on a log scale.</p></li>
+<li><p><strong>scaling</strong> – Scaling of the FFT. Can be ‘amplitude’ (default) or ‘pds’.</p></li>
+<li><p><strong>mask</strong> – An index mask to select particles to plot. If None, all particles are plotted.</p></li>
+<li><p><strong>plot_kwargs</strong> – Keyword arguments passed to the plot function.</p></li>
+<li><p><strong>grid</strong> – If True, show grid lines.</p></li>
+<li><p><strong>ax</strong> – Axes to plot on. If None, a new figure is created.</p></li>
+<li><p><strong>data_units</strong> (<em>dict</em><em>, </em><em>optional</em>) – Units of the data. If None, the units are determined from the data.</p></li>
+<li><p><strong>display_units</strong> (<em>dict</em><em>, </em><em>optional</em>) – Units to display the data in. If None, the units are determined from the data.</p></li>
+<li><p><strong>twiss</strong> (<em>dict</em><em>, </em><em>optional</em>) – Twiss parameters (alfx, alfy, betx and bety) to use for conversion to normalized phase space coordinates.</p></li>
+<li><p><strong>beta</strong> (<em>float</em><em>, </em><em>optional</em>) – Relativistic beta of particles. Defaults to particles.beta0.</p></li>
+<li><p><strong>frev</strong> (<em>float</em><em>, </em><em>optional</em>) – Revolution frequency of circular line for calculation of particle time.</p></li>
+<li><p><strong>circumference</strong> (<em>float</em><em>, </em><em>optional</em>) – Path length of circular line if frev is not given.</p></li>
+<li><p><strong>wrap_zeta</strong> – If set, wrap the zeta-coordinate plotted at the machine circumference. Either pass the circumference directly or set this to True to use the circumference from twiss.</p></li>
+<li><p><strong>subplots_kwargs</strong> – Keyword arguments passed to matplotlib.pyplot.subplots command when a new figure is created.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeFFTPlot.axflat">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">axflat</span></span><a class="headerlink" href="#xplt.timestructure.TimeFFTPlot.axflat" title="Permalink to this definition">#</a></dt>
+<dd><p>Return a flat list of all primary axes</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeFFTPlot.circumference">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">circumference</span></span><a class="headerlink" href="#xplt.timestructure.TimeFFTPlot.circumference" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeFFTPlot.add_scale">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">add_scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertical</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'k'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'x-small'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L507-L556"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeFFTPlot.add_scale" title="Permalink to this definition">#</a></dt>
+<dd><p>Add a scale patch (a yardstick or ruler)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ax</strong> – The axis to add it to.</p></li>
+<li><p><strong>scale</strong> – The size of the scale in data units.</p></li>
+<li><p><strong>label</strong> (<em>str</em><em>, </em><em>optional</em>) – A label for the scale.</p></li>
+<li><p><strong>vertical</strong> (<em>bool</em>) – If true, make a vertical one (default is a horizontal one).</p></li>
+<li><p><strong>width</strong> (<em>float</em>) – The line width of the scale in axis units.</p></li>
+<li><p><strong>padding</strong> (<em>float</em>) – The padding between the scale and the axis.</p></li>
+<li><p><strong>loc</strong> (<em>str</em>) – The location of the scale. Can be any of the usual matplotlib locations, e.g. ‘auto’, ‘upper left’, ‘upper center’, ‘upper right’, ‘center left’, ‘center’, ‘center right’, ‘lower left’, ‘lower center, ‘lower right’.</p></li>
+<li><p><strong>color</strong> – Color for the patch.</p></li>
+<li><p><strong>fontsize</strong> – Font size of the label.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The artist added (an AnchoredOffsetbox).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeFFTPlot.axis_for">
+<span class="sig-name descname"><span class="pre">axis_for</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subplot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">twin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L301-L303"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeFFTPlot.axis_for" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the axis for a given flat subplot index and twin index</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeFFTPlot.beta">
+<span class="sig-name descname"><span class="pre">beta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">particles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/particles.py#L91-L109"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeFFTPlot.beta" title="Permalink to this definition">#</a></dt>
+<dd><p>Get reference relativistic beta as float</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeFFTPlot.data_unit_for">
+<span class="sig-name descname"><span class="pre">data_unit_for</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/timestructure.py#L446-L449"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeFFTPlot.data_unit_for" title="Permalink to this definition">#</a></dt>
+<dd><p>Return data unit for parameter</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeFFTPlot.display_unit_for">
+<span class="sig-name descname"><span class="pre">display_unit_for</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/timestructure.py#L451-L454"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeFFTPlot.display_unit_for" title="Permalink to this definition">#</a></dt>
+<dd><p>Return display unit for parameter</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeFFTPlot.factor_for">
+<span class="sig-name descname"><span class="pre">factor_for</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/particles.py#L177-L200"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeFFTPlot.factor_for" title="Permalink to this definition">#</a></dt>
+<dd><p>Return factor to convert parameter into display unit</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeFFTPlot.fmax">
+<span class="sig-name descname"><span class="pre">fmax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">particles</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/timestructure.py#L373-L378"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeFFTPlot.fmax" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeFFTPlot.frev">
+<span class="sig-name descname"><span class="pre">frev</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">particles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/particles.py#L111-L117"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeFFTPlot.frev" title="Permalink to this definition">#</a></dt>
+<dd><p>Get reference revolution frequency</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeFFTPlot.label_for">
+<span class="sig-name descname"><span class="pre">label_for</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">pp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L391-L441"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeFFTPlot.label_for" title="Permalink to this definition">#</a></dt>
+<dd><p>Return label for list of parameters, joining where possible</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pp</strong> – Parameter names</p></li>
+<li><p><strong>unit</strong> – Wheather to include unit</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeFFTPlot.plot_harmonics">
+<span class="sig-name descname"><span class="pre">plot_harmonics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">plot_kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/timestructure.py#L467-L479"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeFFTPlot.plot_harmonics" title="Permalink to this definition">#</a></dt>
+<dd><p>Add vertical lines or spans indicating the location of values or spans and their harmonics</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>f</strong> (<em>float</em><em> or </em><em>list of float</em>) – Fundamental frequency or list of frequencies in Hz.</p></li>
+<li><p><strong>df</strong> (<em>float</em><em> or </em><em>list of float</em><em>, </em><em>optional</em>) – Bandwidth or list of bandwidths centered around frequencies(s) in Hz.</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – Number of harmonics to plot.</p></li>
+<li><p><strong>plot_kwargs</strong> – Keyword arguments to be passed to plotting method</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeFFTPlot.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L334-L336"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeFFTPlot.save" title="Permalink to this definition">#</a></dt>
+<dd><p>Save the figure</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeFFTPlot.set_axis_ticks_angle">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">set_axis_ticks_angle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">yaxis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L443-L458"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeFFTPlot.set_axis_ticks_angle" title="Permalink to this definition">#</a></dt>
+<dd><p>Set ticks locator and formatter to display an angle</p>
+<p>This will set ticks at multiples or fractions of 180° or pi with appropriate labels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>yaxis</strong> – The axis to format (ax.xaxis or ax.yaxis)</p></li>
+<li><p><strong>minor</strong> (<em>bool</em>) – If true (default), also set the minor locator</p></li>
+<li><p><strong>deg</strong> (<em>bool</em>) – If true, use angles in degree. If false (default), in radians.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeFFTPlot.title">
+<span class="sig-name descname"><span class="pre">title</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L338-L340"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeFFTPlot.title" title="Permalink to this definition">#</a></dt>
+<dd><p>Set figure title</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeFFTPlot.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">particles</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autoscale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/timestructure.py#L380-L444"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeFFTPlot.update" title="Permalink to this definition">#</a></dt>
+<dd><p>Update plot with new data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> – Particles data to plot.</p></li>
+<li><p><strong>mask</strong> – An index mask to select particles to plot. If None, all particles are plotted.</p></li>
+<li><p><strong>autoscale</strong> – Whether or not to perform autoscaling on all axes.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeIntervalPlot">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">xplt.timestructure.</span></span><span class="sig-name descname"><span class="pre">TimeIntervalPlot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">particles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bin_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bin_count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">display_units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frev</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circumference</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">subplots_kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/timestructure.py#L482-L613"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeIntervalPlot" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../particles/index.html#xplt.particles.XParticlePlot" title="xplt.particles.XParticlePlot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xplt.particles.XParticlePlot</span></code></a></p>
+<p>A histogram plot of particle arrival intervals (i.e. delay between consecutive particles).</p>
+<dl class="simple">
+<dt>The plot is based on the particle arrival time, which is:</dt><dd><ul class="simple">
+<li><p>For circular lines: at_turn / frev - zeta / beta / c0</p></li>
+<li><p>For linear lines: zeta / beta / c0</p></li>
+</ul>
+</dd>
+</dl>
+<p>Useful to plot time structures of particles loss, such as spill structures.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> – Particles data to plot.</p></li>
+<li><p><strong>tmax</strong> – Maximum interval (in s) to plot.</p></li>
+<li><p><strong>bin_time</strong> – Time bin width if bin_count is None.</p></li>
+<li><p><strong>bin_count</strong> – Number of bins if bin_time is None.</p></li>
+<li><p><strong>log</strong> – If True, plot on a log scale.</p></li>
+<li><p><strong>mask</strong> – An index mask to select particles to plot. If None, all particles are plotted.</p></li>
+<li><p><strong>plot_kwargs</strong> – Keyword arguments passed to the plot function.</p></li>
+<li><p><strong>grid</strong> – If True, show grid lines.</p></li>
+<li><p><strong>ax</strong> – Axes to plot on. If None, a new figure is created.</p></li>
+<li><p><strong>data_units</strong> (<em>dict</em><em>, </em><em>optional</em>) – Units of the data. If None, the units are determined from the data.</p></li>
+<li><p><strong>display_units</strong> (<em>dict</em><em>, </em><em>optional</em>) – Units to display the data in. If None, the units are determined from the data.</p></li>
+<li><p><strong>beta</strong> (<em>float</em><em>, </em><em>optional</em>) – Relativistic beta of particles. Defaults to particles.beta0.</p></li>
+<li><p><strong>frev</strong> (<em>float</em><em>, </em><em>optional</em>) – Revolution frequency of circular line for calculation of particle time.</p></li>
+<li><p><strong>circumference</strong> (<em>float</em><em>, </em><em>optional</em>) – Path length of circular line if frev is not given.</p></li>
+<li><p><strong>subplots_kwargs</strong> – Keyword arguments passed to matplotlib.pyplot.subplots command when a new figure is created.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeIntervalPlot.axflat">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">axflat</span></span><a class="headerlink" href="#xplt.timestructure.TimeIntervalPlot.axflat" title="Permalink to this definition">#</a></dt>
+<dd><p>Return a flat list of all primary axes</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeIntervalPlot.bin_count">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bin_count</span></span><a class="headerlink" href="#xplt.timestructure.TimeIntervalPlot.bin_count" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeIntervalPlot.bin_time">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bin_time</span></span><a class="headerlink" href="#xplt.timestructure.TimeIntervalPlot.bin_time" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeIntervalPlot.circumference">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">circumference</span></span><a class="headerlink" href="#xplt.timestructure.TimeIntervalPlot.circumference" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeIntervalPlot.add_scale">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">add_scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertical</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'k'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'x-small'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L507-L556"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeIntervalPlot.add_scale" title="Permalink to this definition">#</a></dt>
+<dd><p>Add a scale patch (a yardstick or ruler)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ax</strong> – The axis to add it to.</p></li>
+<li><p><strong>scale</strong> – The size of the scale in data units.</p></li>
+<li><p><strong>label</strong> (<em>str</em><em>, </em><em>optional</em>) – A label for the scale.</p></li>
+<li><p><strong>vertical</strong> (<em>bool</em>) – If true, make a vertical one (default is a horizontal one).</p></li>
+<li><p><strong>width</strong> (<em>float</em>) – The line width of the scale in axis units.</p></li>
+<li><p><strong>padding</strong> (<em>float</em>) – The padding between the scale and the axis.</p></li>
+<li><p><strong>loc</strong> (<em>str</em>) – The location of the scale. Can be any of the usual matplotlib locations, e.g. ‘auto’, ‘upper left’, ‘upper center’, ‘upper right’, ‘center left’, ‘center’, ‘center right’, ‘lower left’, ‘lower center, ‘lower right’.</p></li>
+<li><p><strong>color</strong> – Color for the patch.</p></li>
+<li><p><strong>fontsize</strong> – Font size of the label.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The artist added (an AnchoredOffsetbox).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeIntervalPlot.axis_for">
+<span class="sig-name descname"><span class="pre">axis_for</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subplot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">twin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L301-L303"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeIntervalPlot.axis_for" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the axis for a given flat subplot index and twin index</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeIntervalPlot.beta">
+<span class="sig-name descname"><span class="pre">beta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">particles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/particles.py#L91-L109"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeIntervalPlot.beta" title="Permalink to this definition">#</a></dt>
+<dd><p>Get reference relativistic beta as float</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeIntervalPlot.data_unit_for">
+<span class="sig-name descname"><span class="pre">data_unit_for</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L347-L354"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeIntervalPlot.data_unit_for" title="Permalink to this definition">#</a></dt>
+<dd><p>Return data unit for parameter</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeIntervalPlot.display_unit_for">
+<span class="sig-name descname"><span class="pre">display_unit_for</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L356-L363"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeIntervalPlot.display_unit_for" title="Permalink to this definition">#</a></dt>
+<dd><p>Return display unit for parameter</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeIntervalPlot.factor_for">
+<span class="sig-name descname"><span class="pre">factor_for</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/particles.py#L177-L200"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeIntervalPlot.factor_for" title="Permalink to this definition">#</a></dt>
+<dd><p>Return factor to convert parameter into display unit</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeIntervalPlot.frev">
+<span class="sig-name descname"><span class="pre">frev</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">particles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/particles.py#L111-L117"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeIntervalPlot.frev" title="Permalink to this definition">#</a></dt>
+<dd><p>Get reference revolution frequency</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeIntervalPlot.label_for">
+<span class="sig-name descname"><span class="pre">label_for</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">pp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L391-L441"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeIntervalPlot.label_for" title="Permalink to this definition">#</a></dt>
+<dd><p>Return label for list of parameters, joining where possible</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pp</strong> – Parameter names</p></li>
+<li><p><strong>unit</strong> – Wheather to include unit</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeIntervalPlot.plot_harmonics">
+<span class="sig-name descname"><span class="pre">plot_harmonics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">plot_kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/timestructure.py#L604-L613"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeIntervalPlot.plot_harmonics" title="Permalink to this definition">#</a></dt>
+<dd><p>Add vertical lines or spans indicating the location of values or spans and their harmonics</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> (<em>float</em><em> or </em><em>list of float</em>) – Period in s.</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – Number of harmonics to plot.</p></li>
+<li><p><strong>plot_kwargs</strong> – Keyword arguments to be passed to plotting method</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeIntervalPlot.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L334-L336"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeIntervalPlot.save" title="Permalink to this definition">#</a></dt>
+<dd><p>Save the figure</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeIntervalPlot.set_axis_ticks_angle">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">set_axis_ticks_angle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">yaxis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L443-L458"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeIntervalPlot.set_axis_ticks_angle" title="Permalink to this definition">#</a></dt>
+<dd><p>Set ticks locator and formatter to display an angle</p>
+<p>This will set ticks at multiples or fractions of 180° or pi with appropriate labels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>yaxis</strong> – The axis to format (ax.xaxis or ax.yaxis)</p></li>
+<li><p><strong>minor</strong> (<em>bool</em>) – If true (default), also set the minor locator</p></li>
+<li><p><strong>deg</strong> (<em>bool</em>) – If true, use angles in degree. If false (default), in radians.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeIntervalPlot.title">
+<span class="sig-name descname"><span class="pre">title</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L338-L340"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeIntervalPlot.title" title="Permalink to this definition">#</a></dt>
+<dd><p>Set figure title</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeIntervalPlot.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">particles</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autoscale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/timestructure.py#L577-L602"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeIntervalPlot.update" title="Permalink to this definition">#</a></dt>
+<dd><p>Update plot with new data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> – Particles data to plot.</p></li>
+<li><p><strong>mask</strong> – An index mask to select particles to plot. If None, all particles are plotted.</p></li>
+<li><p><strong>autoscale</strong> – Whether or not to perform autoscaling on all axes.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="xplt.timestructure.TimePlot">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">xplt.timestructure.</span></span><span class="sig-name descname"><span class="pre">TimePlot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">particles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'x+y'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/timestructure.py#L71-L82"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimePlot" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../particles/index.html#xplt.particles.ParticlesPlot" title="xplt.particles.ParticlesPlot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xplt.particles.ParticlesPlot</span></code></a></p>
+<p>A thin wrapper around the ParticlesPlot plotting data as function of time.
+For more information refer to the documentation of the <a class="reference internal" href="../particles/index.html#xplt.particles.ParticlesPlot" title="xplt.particles.ParticlesPlot"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParticlesPlot</span></code></a> class.</p>
+<dl class="simple">
+<dt>The plot is based on the particle arrival time, which is:</dt><dd><ul class="simple">
+<li><p>For circular lines: at_turn / frev - zeta / beta / c0</p></li>
+<li><p>For linear lines: zeta / beta / c0</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="xplt.timestructure.TimePlot.axflat">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">axflat</span></span><a class="headerlink" href="#xplt.timestructure.TimePlot.axflat" title="Permalink to this definition">#</a></dt>
+<dd><p>Return a flat list of all primary axes</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="xplt.timestructure.TimePlot.circumference">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">circumference</span></span><a class="headerlink" href="#xplt.timestructure.TimePlot.circumference" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimePlot.add_scale">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">add_scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertical</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'k'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'x-small'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L507-L556"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimePlot.add_scale" title="Permalink to this definition">#</a></dt>
+<dd><p>Add a scale patch (a yardstick or ruler)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ax</strong> – The axis to add it to.</p></li>
+<li><p><strong>scale</strong> – The size of the scale in data units.</p></li>
+<li><p><strong>label</strong> (<em>str</em><em>, </em><em>optional</em>) – A label for the scale.</p></li>
+<li><p><strong>vertical</strong> (<em>bool</em>) – If true, make a vertical one (default is a horizontal one).</p></li>
+<li><p><strong>width</strong> (<em>float</em>) – The line width of the scale in axis units.</p></li>
+<li><p><strong>padding</strong> (<em>float</em>) – The padding between the scale and the axis.</p></li>
+<li><p><strong>loc</strong> (<em>str</em>) – The location of the scale. Can be any of the usual matplotlib locations, e.g. ‘auto’, ‘upper left’, ‘upper center’, ‘upper right’, ‘center left’, ‘center’, ‘center right’, ‘lower left’, ‘lower center, ‘lower right’.</p></li>
+<li><p><strong>color</strong> – Color for the patch.</p></li>
+<li><p><strong>fontsize</strong> – Font size of the label.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The artist added (an AnchoredOffsetbox).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimePlot.axis_for">
+<span class="sig-name descname"><span class="pre">axis_for</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subplot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">twin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L301-L303"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimePlot.axis_for" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the axis for a given flat subplot index and twin index</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimePlot.beta">
+<span class="sig-name descname"><span class="pre">beta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">particles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/particles.py#L91-L109"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimePlot.beta" title="Permalink to this definition">#</a></dt>
+<dd><p>Get reference relativistic beta as float</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimePlot.data_unit_for">
+<span class="sig-name descname"><span class="pre">data_unit_for</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L347-L354"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimePlot.data_unit_for" title="Permalink to this definition">#</a></dt>
+<dd><p>Return data unit for parameter</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimePlot.display_unit_for">
+<span class="sig-name descname"><span class="pre">display_unit_for</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L356-L363"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimePlot.display_unit_for" title="Permalink to this definition">#</a></dt>
+<dd><p>Return display unit for parameter</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimePlot.factor_for">
+<span class="sig-name descname"><span class="pre">factor_for</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/particles.py#L177-L200"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimePlot.factor_for" title="Permalink to this definition">#</a></dt>
+<dd><p>Return factor to convert parameter into display unit</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimePlot.frev">
+<span class="sig-name descname"><span class="pre">frev</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">particles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/particles.py#L111-L117"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimePlot.frev" title="Permalink to this definition">#</a></dt>
+<dd><p>Get reference revolution frequency</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimePlot.label_for">
+<span class="sig-name descname"><span class="pre">label_for</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">pp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L391-L441"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimePlot.label_for" title="Permalink to this definition">#</a></dt>
+<dd><p>Return label for list of parameters, joining where possible</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pp</strong> – Parameter names</p></li>
+<li><p><strong>unit</strong> – Wheather to include unit</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimePlot.plot_harmonics">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">plot_harmonics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertical</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inverse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">plot_kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L460-L505"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimePlot.plot_harmonics" title="Permalink to this definition">#</a></dt>
+<dd><p>Add vertical lines or spans indicating the location of values or spans and their harmonics</p>
+<p>Indicates the bands at the h-th harmonics for h = 1, 2, …, n
+- h * (v ± dv/2)      if scale_width and not inverse (default)
+- h * v ± dv/2        if not scale_width and not inverse
+- h / (v ± dv/2)      if inverse and scale_width
+- 1 / ( v/h ± dv/2 )  if inverse and not scale_width</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ax</strong> – Axis to plot onto.</p></li>
+<li><p><strong>v</strong> (<em>float</em><em> or </em><em>list of float</em>) – Value or list of values.</p></li>
+<li><p><strong>dv</strong> (<em>float</em><em> or </em><em>list of float</em><em>, </em><em>optional</em>) – Width or list of widths centered around value(s).</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – Number of harmonics to plot.</p></li>
+<li><p><strong>scale_width</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to scale the width for higher harmonics or keep it constant.</p></li>
+<li><p><strong>vertical</strong> (<em>bool</em>) – Plot vertical lines if true, horizontal otherweise.</p></li>
+<li><p><strong>inverse</strong> (<em>bool</em>) – If true, plot harmonics of n/(v±dv) instead of n*(v±dv). Useful to plot frequency harmonics in time domain and vice-versa.</p></li>
+<li><p><strong>plot_kwargs</strong> – Keyword arguments to be passed to plotting method</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimePlot.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L334-L336"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimePlot.save" title="Permalink to this definition">#</a></dt>
+<dd><p>Save the figure</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimePlot.set_axis_ticks_angle">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">set_axis_ticks_angle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">yaxis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L443-L458"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimePlot.set_axis_ticks_angle" title="Permalink to this definition">#</a></dt>
+<dd><p>Set ticks locator and formatter to display an angle</p>
+<p>This will set ticks at multiples or fractions of 180° or pi with appropriate labels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>yaxis</strong> – The axis to format (ax.xaxis or ax.yaxis)</p></li>
+<li><p><strong>minor</strong> (<em>bool</em>) – If true (default), also set the minor locator</p></li>
+<li><p><strong>deg</strong> (<em>bool</em>) – If true, use angles in degree. If false (default), in radians.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimePlot.title">
+<span class="sig-name descname"><span class="pre">title</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L338-L340"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimePlot.title" title="Permalink to this definition">#</a></dt>
+<dd><p>Set figure title</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimePlot.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">particles</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autoscale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/particles.py#L299-L328"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimePlot.update" title="Permalink to this definition">#</a></dt>
+<dd><p>Update plot with new data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> – Particles data to plot.</p></li>
+<li><p><strong>mask</strong> – An index mask to select particles to plot. If None, all particles are plotted.</p></li>
+<li><p><strong>autoscale</strong> – Whether or not to perform autoscaling on all axes.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeVariationPlot">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">xplt.timestructure.</span></span><span class="sig-name descname"><span class="pre">TimeVariationPlot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">particles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cv'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">counting_dt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">counting_bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">evaluate_dt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">evaluate_bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poisson</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">display_units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frev</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circumference</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">subplots_kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/timestructure.py#L616-L803"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeVariationPlot" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../particles/index.html#xplt.particles.XParticlePlot" title="xplt.particles.XParticlePlot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xplt.particles.XParticlePlot</span></code></a></p>
+<p>Plot for variability of particles arriving as function of arrival time</p>
+<dl class="simple">
+<dt>The plot is based on the particle arrival time, which is:</dt><dd><ul class="simple">
+<li><p>For circular lines: at_turn / frev - zeta / beta / c0</p></li>
+<li><p>For linear lines: zeta / beta / c0</p></li>
+</ul>
+</dd>
+</dl>
+<p>Useful to plot time structures of particles loss, such as spill structures.</p>
+<dl class="simple">
+<dt>The following metrics are implemented:</dt><dd><dl class="simple">
+<dt>cv: Coefficient of variation</dt><dd><p>cv = std(N)/mean(N)</p>
+</dd>
+<dt>duty: Spill duty factor</dt><dd><p>F = mean(N)**2 / mean(N**2)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> – Particles data to plot.</p></li>
+<li><p><strong>metric</strong> (<em>str</em>) – Metric to plot. See above for list of implemented metrics.</p></li>
+<li><p><strong>counting_dt</strong> – Time bin width for counting if counting_bins is None.</p></li>
+<li><p><strong>counting_bins</strong> – Number of bins if counting_dt is None.</p></li>
+<li><p><strong>evaluate_dt</strong> – Time bin width for metric evaluation if evaluate_bins is None.</p></li>
+<li><p><strong>evaluate_bins</strong> – Number of bins if evaluate_dt is None.</p></li>
+<li><p><strong>poisson</strong> (<em>bool</em>) – If true, indicate poisson limit.</p></li>
+<li><p><strong>mask</strong> – An index mask to select particles to plot. If None, all particles are plotted.</p></li>
+<li><p><strong>plot_kwargs</strong> – Keyword arguments passed to the plot function.</p></li>
+<li><p><strong>grid</strong> – If True, show grid lines.</p></li>
+<li><p><strong>ax</strong> – Axes to plot on. If None, a new figure is created.</p></li>
+<li><p><strong>data_units</strong> (<em>dict</em><em>, </em><em>optional</em>) – Units of the data. If None, the units are determined from the data.</p></li>
+<li><p><strong>display_units</strong> (<em>dict</em><em>, </em><em>optional</em>) – Units to display the data in. If None, the units are determined from the data.</p></li>
+<li><p><strong>beta</strong> (<em>float</em><em>, </em><em>optional</em>) – Relativistic beta of particles. Defaults to particles.beta0.</p></li>
+<li><p><strong>frev</strong> (<em>float</em><em>, </em><em>optional</em>) – Revolution frequency of circular line for calculation of particle time.</p></li>
+<li><p><strong>circumference</strong> (<em>float</em><em>, </em><em>optional</em>) – Path length of circular line if frev is not given.</p></li>
+<li><p><strong>subplots_kwargs</strong> – Keyword arguments passed to matplotlib.pyplot.subplots command when a new figure is created.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeVariationPlot.axflat">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">axflat</span></span><a class="headerlink" href="#xplt.timestructure.TimeVariationPlot.axflat" title="Permalink to this definition">#</a></dt>
+<dd><p>Return a flat list of all primary axes</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeVariationPlot.circumference">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">circumference</span></span><a class="headerlink" href="#xplt.timestructure.TimeVariationPlot.circumference" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeVariationPlot.add_scale">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">add_scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertical</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'k'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'x-small'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L507-L556"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeVariationPlot.add_scale" title="Permalink to this definition">#</a></dt>
+<dd><p>Add a scale patch (a yardstick or ruler)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ax</strong> – The axis to add it to.</p></li>
+<li><p><strong>scale</strong> – The size of the scale in data units.</p></li>
+<li><p><strong>label</strong> (<em>str</em><em>, </em><em>optional</em>) – A label for the scale.</p></li>
+<li><p><strong>vertical</strong> (<em>bool</em>) – If true, make a vertical one (default is a horizontal one).</p></li>
+<li><p><strong>width</strong> (<em>float</em>) – The line width of the scale in axis units.</p></li>
+<li><p><strong>padding</strong> (<em>float</em>) – The padding between the scale and the axis.</p></li>
+<li><p><strong>loc</strong> (<em>str</em>) – The location of the scale. Can be any of the usual matplotlib locations, e.g. ‘auto’, ‘upper left’, ‘upper center’, ‘upper right’, ‘center left’, ‘center’, ‘center right’, ‘lower left’, ‘lower center, ‘lower right’.</p></li>
+<li><p><strong>color</strong> – Color for the patch.</p></li>
+<li><p><strong>fontsize</strong> – Font size of the label.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The artist added (an AnchoredOffsetbox).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeVariationPlot.axis_for">
+<span class="sig-name descname"><span class="pre">axis_for</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subplot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">twin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L301-L303"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeVariationPlot.axis_for" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the axis for a given flat subplot index and twin index</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeVariationPlot.beta">
+<span class="sig-name descname"><span class="pre">beta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">particles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/particles.py#L91-L109"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeVariationPlot.beta" title="Permalink to this definition">#</a></dt>
+<dd><p>Get reference relativistic beta as float</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeVariationPlot.data_unit_for">
+<span class="sig-name descname"><span class="pre">data_unit_for</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/timestructure.py#L793-L796"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeVariationPlot.data_unit_for" title="Permalink to this definition">#</a></dt>
+<dd><p>Return data unit for parameter</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeVariationPlot.display_unit_for">
+<span class="sig-name descname"><span class="pre">display_unit_for</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L356-L363"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeVariationPlot.display_unit_for" title="Permalink to this definition">#</a></dt>
+<dd><p>Return display unit for parameter</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeVariationPlot.factor_for">
+<span class="sig-name descname"><span class="pre">factor_for</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/particles.py#L177-L200"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeVariationPlot.factor_for" title="Permalink to this definition">#</a></dt>
+<dd><p>Return factor to convert parameter into display unit</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeVariationPlot.frev">
+<span class="sig-name descname"><span class="pre">frev</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">particles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/particles.py#L111-L117"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeVariationPlot.frev" title="Permalink to this definition">#</a></dt>
+<dd><p>Get reference revolution frequency</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeVariationPlot.label_for">
+<span class="sig-name descname"><span class="pre">label_for</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">pp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L391-L441"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeVariationPlot.label_for" title="Permalink to this definition">#</a></dt>
+<dd><p>Return label for list of parameters, joining where possible</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pp</strong> – Parameter names</p></li>
+<li><p><strong>unit</strong> – Wheather to include unit</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeVariationPlot.plot_harmonics">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">plot_harmonics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertical</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inverse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">plot_kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L460-L505"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeVariationPlot.plot_harmonics" title="Permalink to this definition">#</a></dt>
+<dd><p>Add vertical lines or spans indicating the location of values or spans and their harmonics</p>
+<p>Indicates the bands at the h-th harmonics for h = 1, 2, …, n
+- h * (v ± dv/2)      if scale_width and not inverse (default)
+- h * v ± dv/2        if not scale_width and not inverse
+- h / (v ± dv/2)      if inverse and scale_width
+- 1 / ( v/h ± dv/2 )  if inverse and not scale_width</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ax</strong> – Axis to plot onto.</p></li>
+<li><p><strong>v</strong> (<em>float</em><em> or </em><em>list of float</em>) – Value or list of values.</p></li>
+<li><p><strong>dv</strong> (<em>float</em><em> or </em><em>list of float</em><em>, </em><em>optional</em>) – Width or list of widths centered around value(s).</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – Number of harmonics to plot.</p></li>
+<li><p><strong>scale_width</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to scale the width for higher harmonics or keep it constant.</p></li>
+<li><p><strong>vertical</strong> (<em>bool</em>) – Plot vertical lines if true, horizontal otherweise.</p></li>
+<li><p><strong>inverse</strong> (<em>bool</em>) – If true, plot harmonics of n/(v±dv) instead of n*(v±dv). Useful to plot frequency harmonics in time domain and vice-versa.</p></li>
+<li><p><strong>plot_kwargs</strong> – Keyword arguments to be passed to plotting method</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeVariationPlot.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L334-L336"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeVariationPlot.save" title="Permalink to this definition">#</a></dt>
+<dd><p>Save the figure</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeVariationPlot.set_axis_ticks_angle">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">set_axis_ticks_angle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">yaxis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L443-L458"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeVariationPlot.set_axis_ticks_angle" title="Permalink to this definition">#</a></dt>
+<dd><p>Set ticks locator and formatter to display an angle</p>
+<p>This will set ticks at multiples or fractions of 180° or pi with appropriate labels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>yaxis</strong> – The axis to format (ax.xaxis or ax.yaxis)</p></li>
+<li><p><strong>minor</strong> (<em>bool</em>) – If true (default), also set the minor locator</p></li>
+<li><p><strong>deg</strong> (<em>bool</em>) – If true, use angles in degree. If false (default), in radians.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeVariationPlot.title">
+<span class="sig-name descname"><span class="pre">title</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L338-L340"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeVariationPlot.title" title="Permalink to this definition">#</a></dt>
+<dd><p>Set figure title</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.timestructure.TimeVariationPlot.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">particles</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autoscale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/timestructure.py#L728-L791"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.TimeVariationPlot.update" title="Permalink to this definition">#</a></dt>
+<dd><p>Update plot with new data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> – Particles data to plot.</p></li>
+<li><p><strong>mask</strong> – An index mask to select particles to plot. If None, all particles are plotted.</p></li>
+<li><p><strong>autoscale</strong> – Whether or not to perform autoscaling on all axes.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="xplt.timestructure.binned_timeseries">
+<span class="sig-prename descclassname"><span class="pre">xplt.timestructure.</span></span><span class="sig-name descname"><span class="pre">binned_timeseries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">times</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">what</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/timestructure.py#L21-L68"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.timestructure.binned_timeseries" title="Permalink to this definition">#</a></dt>
+<dd><p>Get binned timeseries with equally spaced time bins</p>
+<p>From the particle arrival times (non-equally distributed timestamps), a timeseries with equally
+spaced time bins is derived. The time bin size is determined based on the number of bins.
+The parameter <cite>what</cite> determines what is returned for the timeseries. By default (what=None), the
+number of particles arriving within each time bin is returned. Alternatively, a particle property
+can be passed as array, in which case that property is averaged over all particles arriving within
+the respective bin (or 0 if no particles arrive within a time bin).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>times</strong> – Array of particle arrival times.</p></li>
+<li><p><strong>what</strong> – Array of associated data or None. Must have same shape as times. See above.</p></li>
+<li><p><strong>n</strong> – Number of bins.</p></li>
+<li><p><strong>range</strong> – Tuple of (min, max) time values to consider. If None, the range is determined from the data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The timeseries as tuple (t_min, dt, values) where
+t_min is the start time of the timeseries data,
+dt is the time bin width and
+values are the values of the timeseries as array of length n.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+            </article>
+            
+            
+            
+            <footer class="bd-footer-article">
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+  <a class='left-prev' id="prev-link" href="../phasespace/index.html" title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+          <p class="prev-next-subtitle">previous</p>
+          <p class="prev-next-title"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xplt.phasespace</span></code></p>
+      </div>
+  </a>
+  <a class='right-next' id="next-link" href="../twiss/index.html" title="next page">
+  <div class="prev-next-info">
+      <p class="prev-next-subtitle">next</p>
+      <p class="prev-next-title"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xplt.twiss</span></code></p>
+  </div>
+  <i class="fa-solid fa-angle-right"></i>
+  </a>
+</div>
+            </footer>
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
+  
+<div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-contents">
+   Module Contents
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#classes">
+     Classes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#functions">
+     Functions
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#xplt.timestructure.TimeBinPlot">
+       TimeBinPlot
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeBinPlot.axflat">
+         axflat
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeBinPlot.circumference">
+         circumference
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeBinPlot.add_scale">
+         add_scale
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeBinPlot.axis_for">
+         axis_for
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeBinPlot.beta">
+         beta
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeBinPlot.data_unit_for">
+         data_unit_for
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeBinPlot.display_unit_for">
+         display_unit_for
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeBinPlot.factor_for">
+         factor_for
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeBinPlot.frev">
+         frev
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeBinPlot.label_for">
+         label_for
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeBinPlot.plot_harmonics">
+         plot_harmonics
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeBinPlot.save">
+         save
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeBinPlot.set_axis_ticks_angle">
+         set_axis_ticks_angle
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeBinPlot.title">
+         title
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeBinPlot.update">
+         update
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#xplt.timestructure.TimeFFTPlot">
+       TimeFFTPlot
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeFFTPlot.axflat">
+         axflat
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeFFTPlot.circumference">
+         circumference
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeFFTPlot.add_scale">
+         add_scale
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeFFTPlot.axis_for">
+         axis_for
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeFFTPlot.beta">
+         beta
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeFFTPlot.data_unit_for">
+         data_unit_for
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeFFTPlot.display_unit_for">
+         display_unit_for
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeFFTPlot.factor_for">
+         factor_for
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeFFTPlot.fmax">
+         fmax
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeFFTPlot.frev">
+         frev
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeFFTPlot.label_for">
+         label_for
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeFFTPlot.plot_harmonics">
+         plot_harmonics
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeFFTPlot.save">
+         save
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeFFTPlot.set_axis_ticks_angle">
+         set_axis_ticks_angle
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeFFTPlot.title">
+         title
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeFFTPlot.update">
+         update
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#xplt.timestructure.TimeIntervalPlot">
+       TimeIntervalPlot
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeIntervalPlot.axflat">
+         axflat
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeIntervalPlot.bin_count">
+         bin_count
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeIntervalPlot.bin_time">
+         bin_time
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeIntervalPlot.circumference">
+         circumference
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeIntervalPlot.add_scale">
+         add_scale
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeIntervalPlot.axis_for">
+         axis_for
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeIntervalPlot.beta">
+         beta
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeIntervalPlot.data_unit_for">
+         data_unit_for
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeIntervalPlot.display_unit_for">
+         display_unit_for
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeIntervalPlot.factor_for">
+         factor_for
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeIntervalPlot.frev">
+         frev
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeIntervalPlot.label_for">
+         label_for
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeIntervalPlot.plot_harmonics">
+         plot_harmonics
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeIntervalPlot.save">
+         save
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeIntervalPlot.set_axis_ticks_angle">
+         set_axis_ticks_angle
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeIntervalPlot.title">
+         title
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeIntervalPlot.update">
+         update
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#xplt.timestructure.TimePlot">
+       TimePlot
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimePlot.axflat">
+         axflat
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimePlot.circumference">
+         circumference
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimePlot.add_scale">
+         add_scale
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimePlot.axis_for">
+         axis_for
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimePlot.beta">
+         beta
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimePlot.data_unit_for">
+         data_unit_for
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimePlot.display_unit_for">
+         display_unit_for
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimePlot.factor_for">
+         factor_for
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimePlot.frev">
+         frev
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimePlot.label_for">
+         label_for
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimePlot.plot_harmonics">
+         plot_harmonics
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimePlot.save">
+         save
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimePlot.set_axis_ticks_angle">
+         set_axis_ticks_angle
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimePlot.title">
+         title
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimePlot.update">
+         update
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#xplt.timestructure.TimeVariationPlot">
+       TimeVariationPlot
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeVariationPlot.axflat">
+         axflat
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeVariationPlot.circumference">
+         circumference
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeVariationPlot.add_scale">
+         add_scale
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeVariationPlot.axis_for">
+         axis_for
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeVariationPlot.beta">
+         beta
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeVariationPlot.data_unit_for">
+         data_unit_for
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeVariationPlot.display_unit_for">
+         display_unit_for
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeVariationPlot.factor_for">
+         factor_for
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeVariationPlot.frev">
+         frev
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeVariationPlot.label_for">
+         label_for
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeVariationPlot.plot_harmonics">
+         plot_harmonics
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeVariationPlot.save">
+         save
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeVariationPlot.set_axis_ticks_angle">
+         set_axis_ticks_angle
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeVariationPlot.title">
+         title
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.timestructure.TimeVariationPlot.update">
+         update
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#xplt.timestructure.binned_timeseries">
+       binned_timeseries
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+</div>
+
+<div class="toc-item">
+  
+<div id="searchbox"></div>
+</div>
+
+<div class="toc-item">
+  
+</div>
+
+<div class="toc-item">
+  
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+          </div>
+        </footer>
+        
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536"></script>
+
+  <footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    
+<p class="copyright">
+
+    &copy; Copyright 2022, Philipp Niedermayer (github.com/eltos).<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
+</p>
+
+  </div>
+  
+</div>
+  </footer>
+  </body>
+</html>

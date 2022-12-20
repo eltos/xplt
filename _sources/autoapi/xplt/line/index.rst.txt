@@ -1,0 +1,328 @@
+:py:mod:`xplt.line`
+===================
+
+.. py:module:: xplt.line
+
+.. autoapi-nested-parse::
+
+   Methods for plotting lines
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   xplt.line.FloorPlot
+   xplt.line.KnlPlot
+
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   xplt.line.iter_elements
+
+
+
+.. py:class:: FloorPlot(survey=None, line=None, projection='ZX', *, boxes=None, labels=False, element_width=1, ax=None, data_units=None, display_units=None, **subplots_kwargs)
+
+   Bases: :py:obj:`xplt.base.XPlot`
+
+   
+   A floor plan of the line based on survey data
+
+   :param survey: Survey data.
+   :param projection: The projection to use: A pair of coordinates ('XZ', 'ZY' etc.)
+   :param line: Line data with additional information about elements.
+                Use this to have colored boxes of correct size etc.
+   :param boxes: Config option for showing colored boxes for elements. See below.
+                 Detailed options can be "length" and all options suitable for a patch,
+                 such as "color", "alpha", etc.
+   :param labels: Config option for showing labels for elements. See below.
+                  Detailed options can be "text" (e.g. "Dipole {name}" where name will be
+                  replaced with the element name) and all options suitable for an annotation,
+                  such as "color", "alpha", etc.
+   :param element_width: Width of element boxes.
+   :type element_width: float
+   :param ax: An axes to plot onto. If None, a new figure is created.
+   :param data_units: Units of the data. If None, the units are determined from the data.
+   :type data_units: dict, optional
+   :param display_units: Units to display the data in. If None, the units are determined from the data.
+   :type display_units: dict, optional
+   :param subplots_kwargs: Keyword arguments passed to matplotlib.pyplot.subplots command when a new figure is created.
+
+   The config options can be:
+       - None: Use good defaults.
+       - A bool: En-/disable option for all elements (except drifts).
+       - A str (regex): Filter by element name.
+       - A dict: Detailed options to apply for each element in the form of
+           {"regex": {...}}. For each matching element name, the options are used.
+
+
+   .. py:property:: axflat
+
+      Return a flat list of all primary axes
+
+   .. py:method:: add_scale(scale=None, label=None, *, loc='auto', color='k', fontsize='x-small')
+
+      Add a scale patch (a yardstick or ruler)
+
+      :param scale: The length of the scale in data units (typically meter).
+      :param label: A label for the scale.
+      :type label: str, optional
+      :param loc: The location of the scale. Can be any of the usual matplotlib locations, e.g. 'auto', 'upper left', 'upper center', 'upper right', 'center left', 'center', 'center right', 'lower left', 'lower center, 'lower right'.
+      :type loc: str
+      :param color: Color for the patch.
+      :param fontsize: Font size of the label.
+
+      :returns: The artist added (an AnchoredOffsetbox).
+
+
+   .. py:method:: axis_for(subplot=0, twin=0)
+
+      Return the axis for a given flat subplot index and twin index
+
+
+   .. py:method:: data_unit_for(p)
+
+      Return data unit for parameter
+
+
+   .. py:method:: display_unit_for(p)
+
+      Return display unit for parameter
+
+
+   .. py:method:: factor_for(p)
+
+      Return factor to convert parameter into display unit
+
+
+   .. py:method:: label_for(*pp, unit=True)
+
+      Return label for list of parameters, joining where possible
+
+      :param pp: Parameter names
+      :param unit: Wheather to include unit
+
+
+   .. py:method:: plot_harmonics(ax, v, dv=0, *, n=20, scale_width=True, vertical=True, inverse=False, **plot_kwargs)
+      :staticmethod:
+
+      Add vertical lines or spans indicating the location of values or spans and their harmonics
+
+      Indicates the bands at the h-th harmonics for h = 1, 2, ..., n
+      - h * (v ± dv/2)      if scale_width and not inverse (default)
+      - h * v ± dv/2        if not scale_width and not inverse
+      - h / (v ± dv/2)      if inverse and scale_width
+      - 1 / ( v/h ± dv/2 )  if inverse and not scale_width
+
+      :param ax: Axis to plot onto.
+      :param v: Value or list of values.
+      :type v: float or list of float
+      :param dv: Width or list of widths centered around value(s).
+      :type dv: float or list of float, optional
+      :param n: Number of harmonics to plot.
+      :type n: int
+      :param scale_width: Whether to scale the width for higher harmonics or keep it constant.
+      :type scale_width: bool, optional
+      :param vertical: Plot vertical lines if true, horizontal otherweise.
+      :type vertical: bool
+      :param inverse: If true, plot harmonics of n/(v±dv) instead of n*(v±dv). Useful to plot frequency harmonics in time domain and vice-versa.
+      :type inverse: bool
+      :param plot_kwargs: Keyword arguments to be passed to plotting method
+
+
+   .. py:method:: save(fname, **kwargs)
+
+      Save the figure
+
+
+   .. py:method:: set_axis_ticks_angle(yaxis, minor=True, deg=False)
+      :staticmethod:
+
+      Set ticks locator and formatter to display an angle
+
+      This will set ticks at multiples or fractions of 180° or pi with appropriate labels
+
+      :param yaxis: The axis to format (ax.xaxis or ax.yaxis)
+      :param minor: If true (default), also set the minor locator
+      :type minor: bool
+      :param deg: If true, use angles in degree. If false (default), in radians.
+      :type deg: bool
+
+
+   .. py:method:: title(title, **kwargs)
+
+      Set figure title
+
+
+   .. py:method:: update(survey, line=None, autoscale=False)
+
+      Update the survey data this plot shows
+
+      :param survey: Survey data.
+      :param line: Line data.
+      :param autoscale: Whether or not to perform autoscaling on all axes
+
+      :returns: changed artists
+
+
+
+.. py:class:: KnlPlot(line=None, *, knl=None, ax=None, filled=True, data_units=None, display_units=None, resolution=1000, line_length=None, **subplots_kwargs)
+
+   Bases: :py:obj:`xplt.base.XPlot`
+
+   
+   A plot for knl values along line
+
+   :param line: Line of elements.
+   :param knl: Maximum order or list of orders n to plot knl values for. If None, automatically determine from line.
+   :type knl: int or list of int
+   :param ax: An axes to plot onto. If None, a new figure is created.
+   :param filled: If True, make a filled plot instead of a line plot.
+   :type filled: bool
+   :param data_units: Units of the data. If None, the units are determined from the data.
+   :type data_units: dict, optional
+   :param display_units: Units to display the data in. If None, the units are determined from the data.
+   :type display_units: dict, optional
+   :param resolution: Number of points to use for plot.
+   :param line_length: Length of line (only required if line is None).
+   :param subplots_kwargs: Keyword arguments passed to matplotlib.pyplot.subplots command when a new figure is created.
+
+   Known issues:
+       - Thin elements produced with MAD-X MAKETHIN do overlap due to the displacement introduced by the TEAPOT algorithm.
+         This leads to glitches of knl being doubled or zero at element overlaps for lines containing such elements.
+
+
+   .. py:property:: axflat
+
+      Return a flat list of all primary axes
+
+   .. py:method:: add_scale(ax, scale, label=None, *, vertical=False, width=0.01, padding=0.1, loc='auto', color='k', fontsize='x-small')
+      :staticmethod:
+
+      Add a scale patch (a yardstick or ruler)
+
+      :param ax: The axis to add it to.
+      :param scale: The size of the scale in data units.
+      :param label: A label for the scale.
+      :type label: str, optional
+      :param vertical: If true, make a vertical one (default is a horizontal one).
+      :type vertical: bool
+      :param width: The line width of the scale in axis units.
+      :type width: float
+      :param padding: The padding between the scale and the axis.
+      :type padding: float
+      :param loc: The location of the scale. Can be any of the usual matplotlib locations, e.g. 'auto', 'upper left', 'upper center', 'upper right', 'center left', 'center', 'center right', 'lower left', 'lower center, 'lower right'.
+      :type loc: str
+      :param color: Color for the patch.
+      :param fontsize: Font size of the label.
+
+      :returns: The artist added (an AnchoredOffsetbox).
+
+
+   .. py:method:: axis_for(subplot=0, twin=0)
+
+      Return the axis for a given flat subplot index and twin index
+
+
+   .. py:method:: data_unit_for(p)
+
+      Return data unit for parameter
+
+
+   .. py:method:: display_unit_for(p)
+
+      Return display unit for parameter
+
+
+   .. py:method:: factor_for(p)
+
+      Return factor to convert parameter into display unit
+
+
+   .. py:method:: label_for(*pp, unit=True)
+
+      Return label for list of parameters, joining where possible
+
+      :param pp: Parameter names
+      :param unit: Wheather to include unit
+
+
+   .. py:method:: plot_harmonics(ax, v, dv=0, *, n=20, scale_width=True, vertical=True, inverse=False, **plot_kwargs)
+      :staticmethod:
+
+      Add vertical lines or spans indicating the location of values or spans and their harmonics
+
+      Indicates the bands at the h-th harmonics for h = 1, 2, ..., n
+      - h * (v ± dv/2)      if scale_width and not inverse (default)
+      - h * v ± dv/2        if not scale_width and not inverse
+      - h / (v ± dv/2)      if inverse and scale_width
+      - 1 / ( v/h ± dv/2 )  if inverse and not scale_width
+
+      :param ax: Axis to plot onto.
+      :param v: Value or list of values.
+      :type v: float or list of float
+      :param dv: Width or list of widths centered around value(s).
+      :type dv: float or list of float, optional
+      :param n: Number of harmonics to plot.
+      :type n: int
+      :param scale_width: Whether to scale the width for higher harmonics or keep it constant.
+      :type scale_width: bool, optional
+      :param vertical: Plot vertical lines if true, horizontal otherweise.
+      :type vertical: bool
+      :param inverse: If true, plot harmonics of n/(v±dv) instead of n*(v±dv). Useful to plot frequency harmonics in time domain and vice-versa.
+      :type inverse: bool
+      :param plot_kwargs: Keyword arguments to be passed to plotting method
+
+
+   .. py:method:: save(fname, **kwargs)
+
+      Save the figure
+
+
+   .. py:method:: set_axis_ticks_angle(yaxis, minor=True, deg=False)
+      :staticmethod:
+
+      Set ticks locator and formatter to display an angle
+
+      This will set ticks at multiples or fractions of 180° or pi with appropriate labels
+
+      :param yaxis: The axis to format (ax.xaxis or ax.yaxis)
+      :param minor: If true (default), also set the minor locator
+      :type minor: bool
+      :param deg: If true, use angles in degree. If false (default), in radians.
+      :type deg: bool
+
+
+   .. py:method:: title(title, **kwargs)
+
+      Set figure title
+
+
+   .. py:method:: update(line, autoscale=False)
+
+      Update the line data this plot shows
+
+      :param line: Line of elements.
+      :param autoscale: Whether or not to perform autoscaling on all axes
+      :return: changed artists
+
+
+
+.. py:function:: iter_elements(line)
+
+   Iterate over elements in line
+
+   Yields (name, element, s_from, s_to) with
+
+
+

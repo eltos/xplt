@@ -1,0 +1,858 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>xplt.phasespace &#8212; Xplt 0.3.0 documentation</title>
+  <script>
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+
+  
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-codeautolink.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'autoapi/xplt/phasespace/index';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="xplt.timestructure" href="../timestructure/index.html" />
+    <link rel="prev" title="xplt.particles" href="../particles/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="None">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+      
+<form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  </div>
+
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../../index.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+    <p class="title logo__title">Xplt 0.3.0 documentation</p>
+  
+</a>
+    
+  </div>
+
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../quickstart.html">
+                        Quickstart
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../usage.html">
+                        User guide
+                    </a>
+                </li>
+                
+
+                <li class="nav-item current active">
+                    <a class="nav-link" href="../../../api.html">
+                        API documentation
+                    </a>
+                </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      <div class="navbar-end-item navbar-end__search-button-container">
+        
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eltos/xplt" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/xplt" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-solid fa-cube"></i></span>
+            <label class="sr-only">PyPI</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+
+
+  
+  <div class="search-button-container--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+  </div>
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../quickstart.html">
+                        Quickstart
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../usage.html">
+                        User guide
+                    </a>
+                </li>
+                
+
+                <li class="nav-item current active">
+                    <a class="nav-link" href="../../../api.html">
+                        API documentation
+                    </a>
+                </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eltos/xplt" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/xplt" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-solid fa-cube"></i></span>
+            <label class="sr-only">PyPI</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+  <div class="sidebar-start-items sidebar-primary__section">
+    <div class="sidebar-start-items__item"><nav class="bd-links" id="bd-docs-nav" aria-label="Section navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+    Section Navigation
+  </p>
+  <div class="bd-toc-item navbar-nav">
+    <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xplt</span></code></a><input checked class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../base/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xplt.base</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../colors/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xplt.colors</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hooks/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xplt.hooks</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../line/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xplt.line</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../particles/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xplt.particles</span></code></a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xplt.phasespace</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../timestructure/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xplt.timestructure</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../twiss/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xplt.twiss</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../util/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xplt.util</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+</nav>
+    </div>
+  </div>
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+      </div>
+      <main class="bd-main">
+        
+        
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+            </div>
+            
+            
+            <article class="bd-article" role="main">
+              
+  <section id="module-xplt.phasespace">
+<span id="xplt-phasespace"></span><h1><a class="reference internal" href="#module-xplt.phasespace" title="xplt.phasespace"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xplt.phasespace</span></code></a><a class="headerlink" href="#module-xplt.phasespace" title="Permalink to this headline">#</a></h1>
+<p>Methods for plotting phase space distributions</p>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">#</a></h2>
+<section id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">#</a></h3>
+<table class="autosummary longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#xplt.phasespace.PhaseSpacePlot" title="xplt.phasespace.PhaseSpacePlot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseSpacePlot</span></code></a></p></td>
+<td><p>A plot for phase space distributions</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">#</a></h3>
+<table class="autosummary longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#xplt.phasespace.pairwise" title="xplt.phasespace.pairwise"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pairwise</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="xplt.phasespace.PhaseSpacePlot">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">xplt.phasespace.</span></span><span class="sig-name descname"><span class="pre">PhaseSpacePlot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">particles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scatter_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hist_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">masks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">display_units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">twiss</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'magma_r'</span> <span class="pre">or</span> <span class="pre">'Blues'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cbar_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projections</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projections_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mean</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mean_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">std</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">std_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentiles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">titles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrap_zeta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frev</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circumference</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">animated</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">subplots_kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/phasespace.py#L26-L631"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.phasespace.PhaseSpacePlot" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../particles/index.html#xplt.particles.XParticlePlot" title="xplt.particles.XParticlePlot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xplt.particles.XParticlePlot</span></code></a></p>
+<p>A plot for phase space distributions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> – A dictionary with particle information</p></li>
+<li><p><strong>kind</strong> – <p>Defines the properties to plot.
+This can be a nested list or a separated string or a mixture of lists and strings where
+the first list level (or separator <code class="docutils literal notranslate"><span class="pre">,</span></code>) determines the subplots,
+and the second list level (or separator <code class="docutils literal notranslate"><span class="pre">-</span></code>) determines coordinate pairs.
+In addition, abbreviations for x-y-parameter pairs are supported (e.g. ‘x’ for ‘x-px’).
+For normalized coordinates, use uppercase letters (e.g. ‘X’ for ‘X-Px’).</p>
+<p class="rubric">Examples</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">'x'</span></code>: single subplot with x-px phase space</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[['x',</span> <span class="pre">'px']]</span></code>: same as above</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'x,x-y'</span></code>: two suplots the first with x-px and the second with x-y phase space</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[['x',</span> <span class="pre">'px'],</span> <span class="pre">['x',</span> <span class="pre">'y']]</span></code>: same as above</p></li>
+</ul>
+</p></li>
+<li><p><strong>plot</strong> – Defines the type of plot. Can be ‘auto’, ‘scatter’ or ‘hist’. Default is ‘auto’ for which the plot type is chosen automatically based on the number of particles.</p></li>
+<li><p><strong>scatter_kwargs</strong> – Additional kwargs for scatter plot</p></li>
+<li><p><strong>hist_kwargs</strong> – Additional kwargs for hexbin histogram plot</p></li>
+<li><p><strong>ax</strong> – A list of axes to plot onto, length must match the number of subplots. If None, a new figure is created.</p></li>
+<li><p><strong>mask</strong> – An index mask to select particles to plot. If None, all particles are plotted.</p></li>
+<li><p><strong>masks</strong> – List of masks for each subplot.</p></li>
+<li><p><strong>display_units</strong> (<em>dict</em><em>, </em><em>optional</em>) – Units to display the data in. If None, the units are determined from the data.</p></li>
+<li><p><strong>data_units</strong> (<em>dict</em><em>, </em><em>optional</em>) – Units of the data. If None, the units are determined from the data.</p></li>
+<li><p><strong>twiss</strong> (<em>dict</em><em>, </em><em>optional</em>) – Twiss parameters (alfx, alfy, betx and bety) to use for conversion to normalized phase space coordinates.</p></li>
+<li><p><strong>color</strong> (<em>str</em><em> or </em><em>list of str</em>) – Properties defining the color of points for the scatter plot(s). Implies plot=’scatter’. Pass a list of properties to use different values for each subplot</p></li>
+<li><p><strong>cmap</strong> – Colormap to use for the hist plot.</p></li>
+<li><p><strong>cbar_loc</strong> – Location of the colorbar, such as ‘right’, ‘inside upper right’, etc.</p></li>
+<li><p><strong>projections</strong> – Add histogrammed projections onto axis. Can be True, False, “x”, “y”, “auto” or a list of these for each subplot</p></li>
+<li><p><strong>projections_kwargs</strong> – Additional kwargs for histogram projection (step plot)</p></li>
+<li><p><strong>mean</strong> – Whether to indicate mean of distribution with a cross marker. Boolean or list of booleans for each subplot.</p></li>
+<li><p><strong>mean_kwargs</strong> – Additional kwargs for mean cross</p></li>
+<li><p><strong>std</strong> – Whether to indicate standard deviation of distribution with an ellipse. Boolean or list of booleans for each subplot.</p></li>
+<li><p><strong>std_kwargs</strong> – Additional kwargs for std ellipses.</p></li>
+<li><p><strong>percentiles</strong> – List of percentiles (in percent) to indicate in the distribution with ellipses. Can also be a list of lists for each subplot.</p></li>
+<li><p><strong>percentile_kwargs</strong> – Additional kwargs for percentile ellipses.</p></li>
+<li><p><strong>grid</strong> – Tuple (ncol, nrow) for subplot layout. If None, the layout is determined automatically.</p></li>
+<li><p><strong>titles</strong> – List of titles for each subplot or ‘auto’ to automatically set titles based on plot kind.</p></li>
+<li><p><strong>wrap_zeta</strong> – If set, wrap the zeta-coordinate plotted at the machine circumference. Either pass the circumference directly or set this to True to use the circumference from twiss.</p></li>
+<li><p><strong>beta</strong> (<em>float</em><em>, </em><em>optional</em>) – Relativistic beta of particles. Defaults to particles.beta0.</p></li>
+<li><p><strong>frev</strong> (<em>float</em><em>, </em><em>optional</em>) – Revolution frequency of circular line for calculation of particle time.</p></li>
+<li><p><strong>circumference</strong> (<em>float</em><em>, </em><em>optional</em>) – Path length of circular line if frev is not given.</p></li>
+<li><p><strong>animated</strong> – If True, improve plotting performance for creating an animation.</p></li>
+<li><p><strong>subplots_kwargs</strong> – Keyword arguments passed to matplotlib.pyplot.subplots command when a new figure is created.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="xplt.phasespace.PhaseSpacePlot.axflat">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">axflat</span></span><a class="headerlink" href="#xplt.phasespace.PhaseSpacePlot.axflat" title="Permalink to this definition">#</a></dt>
+<dd><p>Return a flat list of all primary axes</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="xplt.phasespace.PhaseSpacePlot.circumference">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">circumference</span></span><a class="headerlink" href="#xplt.phasespace.PhaseSpacePlot.circumference" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.phasespace.PhaseSpacePlot.add_scale">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">add_scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertical</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'k'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'x-small'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L507-L556"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.phasespace.PhaseSpacePlot.add_scale" title="Permalink to this definition">#</a></dt>
+<dd><p>Add a scale patch (a yardstick or ruler)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ax</strong> – The axis to add it to.</p></li>
+<li><p><strong>scale</strong> – The size of the scale in data units.</p></li>
+<li><p><strong>label</strong> (<em>str</em><em>, </em><em>optional</em>) – A label for the scale.</p></li>
+<li><p><strong>vertical</strong> (<em>bool</em>) – If true, make a vertical one (default is a horizontal one).</p></li>
+<li><p><strong>width</strong> (<em>float</em>) – The line width of the scale in axis units.</p></li>
+<li><p><strong>padding</strong> (<em>float</em>) – The padding between the scale and the axis.</p></li>
+<li><p><strong>loc</strong> (<em>str</em>) – The location of the scale. Can be any of the usual matplotlib locations, e.g. ‘auto’, ‘upper left’, ‘upper center’, ‘upper right’, ‘center left’, ‘center’, ‘center right’, ‘lower left’, ‘lower center, ‘lower right’.</p></li>
+<li><p><strong>color</strong> – Color for the patch.</p></li>
+<li><p><strong>fontsize</strong> – Font size of the label.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The artist added (an AnchoredOffsetbox).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.phasespace.PhaseSpacePlot.axis_for">
+<span class="sig-name descname"><span class="pre">axis_for</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subplot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">twin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L301-L303"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.phasespace.PhaseSpacePlot.axis_for" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the axis for a given flat subplot index and twin index</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.phasespace.PhaseSpacePlot.axline">
+<span class="sig-name descname"><span class="pre">axline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kind</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">also_on_normalized</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subplots</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/phasespace.py#L466-L502"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.phasespace.PhaseSpacePlot.axline" title="Permalink to this definition">#</a></dt>
+<dd><p>Plot a vertical or horizontal line for a given coordinate</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>kind</strong> (<em>str</em>) – Phase space coordinate</p></li>
+<li><p><strong>val</strong> (<em>float</em>) – Value of phase space coordinate</p></li>
+<li><p><strong>also_on_normalized</strong> (<em>bool</em><em>, </em><em>optional</em>) – If true, also plot line for related (de-)normalized phase space coordinate</p></li>
+<li><p><strong>subplots</strong> (<em>list of int</em>) – Subplots to plot line onto. Defaults to all with matching coordinates.</p></li>
+<li><p><strong>kwargs</strong> – Arguments for axvline or axhline</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.phasespace.PhaseSpacePlot.beta">
+<span class="sig-name descname"><span class="pre">beta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">particles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/particles.py#L91-L109"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.phasespace.PhaseSpacePlot.beta" title="Permalink to this definition">#</a></dt>
+<dd><p>Get reference relativistic beta as float</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.phasespace.PhaseSpacePlot.data_unit_for">
+<span class="sig-name descname"><span class="pre">data_unit_for</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L347-L354"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.phasespace.PhaseSpacePlot.data_unit_for" title="Permalink to this definition">#</a></dt>
+<dd><p>Return data unit for parameter</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.phasespace.PhaseSpacePlot.display_unit_for">
+<span class="sig-name descname"><span class="pre">display_unit_for</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L356-L363"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.phasespace.PhaseSpacePlot.display_unit_for" title="Permalink to this definition">#</a></dt>
+<dd><p>Return display unit for parameter</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.phasespace.PhaseSpacePlot.factor_for">
+<span class="sig-name descname"><span class="pre">factor_for</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/particles.py#L177-L200"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.phasespace.PhaseSpacePlot.factor_for" title="Permalink to this definition">#</a></dt>
+<dd><p>Return factor to convert parameter into display unit</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.phasespace.PhaseSpacePlot.frev">
+<span class="sig-name descname"><span class="pre">frev</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">particles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/particles.py#L111-L117"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.phasespace.PhaseSpacePlot.frev" title="Permalink to this definition">#</a></dt>
+<dd><p>Get reference revolution frequency</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.phasespace.PhaseSpacePlot.label_for">
+<span class="sig-name descname"><span class="pre">label_for</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">pp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L391-L441"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.phasespace.PhaseSpacePlot.label_for" title="Permalink to this definition">#</a></dt>
+<dd><p>Return label for list of parameters, joining where possible</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pp</strong> – Parameter names</p></li>
+<li><p><strong>unit</strong> – Wheather to include unit</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.phasespace.PhaseSpacePlot.plot_hamiltonian_kobayashi">
+<span class="sig-name descname"><span class="pre">plot_hamiltonian_kobayashi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subplots</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">S</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autoscale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">separatrix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">separatrix_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">equipotentials</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">equipotentials_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/phasespace.py#L504-L631"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.phasespace.PhaseSpacePlot.plot_hamiltonian_kobayashi" title="Permalink to this definition">#</a></dt>
+<dd><p>Plot separatrix and equipotential lines of kobayashi hamiltonian</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>subplots</strong> (<em>int</em><em> or </em><em>list of int</em>) – Index of subplot(s)</p></li>
+<li><p><strong>S</strong> (<em>float</em>) – Virtual sextupole strength in m^(-1/2)</p></li>
+<li><p><strong>mu</strong> (<em>float</em>) – Virtual sextupole phase in rad/2pi</p></li>
+<li><p><strong>delta</strong> (<em>float</em><em>, </em><em>optional</em>) – Momentum offset.</p></li>
+<li><p><strong>extend</strong> (<em>float</em><em>, </em><em>optional</em>) – Extend of separatrix and equipotential lines. If &gt; 1 they are drawn beyond the the stable region.</p></li>
+<li><p><strong>autoscale</strong> (<em>bool</em><em> or </em><em>float</em><em>, </em><em>optional</em>) – Whether to autoscale axis or not (bool), or the extend to consider for autoscaling</p></li>
+<li><p><strong>separatrix</strong> (<em>bool</em><em>, </em><em>optional</em>) – Plot separatrix. Defaults to True.</p></li>
+<li><p><strong>separatrix_kwargs</strong> (<em>dict</em><em>, </em><em>optional</em>) – Keyword arguments for separatrix line plot.</p></li>
+<li><p><strong>equipotentials</strong> (<em>bool</em><em>, </em><em>optional</em>) – Plot equipotential lines. Defaults to True.</p></li>
+<li><p><strong>equipotentials_kwargs</strong> (<em>dict</em><em>, </em><em>optional</em>) – Keyword arguments for equipotential line contour plot.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.phasespace.PhaseSpacePlot.plot_harmonics">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">plot_harmonics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertical</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inverse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">plot_kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L460-L505"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.phasespace.PhaseSpacePlot.plot_harmonics" title="Permalink to this definition">#</a></dt>
+<dd><p>Add vertical lines or spans indicating the location of values or spans and their harmonics</p>
+<p>Indicates the bands at the h-th harmonics for h = 1, 2, …, n
+- h * (v ± dv/2)      if scale_width and not inverse (default)
+- h * v ± dv/2        if not scale_width and not inverse
+- h / (v ± dv/2)      if inverse and scale_width
+- 1 / ( v/h ± dv/2 )  if inverse and not scale_width</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ax</strong> – Axis to plot onto.</p></li>
+<li><p><strong>v</strong> (<em>float</em><em> or </em><em>list of float</em>) – Value or list of values.</p></li>
+<li><p><strong>dv</strong> (<em>float</em><em> or </em><em>list of float</em><em>, </em><em>optional</em>) – Width or list of widths centered around value(s).</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – Number of harmonics to plot.</p></li>
+<li><p><strong>scale_width</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to scale the width for higher harmonics or keep it constant.</p></li>
+<li><p><strong>vertical</strong> (<em>bool</em>) – Plot vertical lines if true, horizontal otherweise.</p></li>
+<li><p><strong>inverse</strong> (<em>bool</em>) – If true, plot harmonics of n/(v±dv) instead of n*(v±dv). Useful to plot frequency harmonics in time domain and vice-versa.</p></li>
+<li><p><strong>plot_kwargs</strong> – Keyword arguments to be passed to plotting method</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.phasespace.PhaseSpacePlot.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L334-L336"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.phasespace.PhaseSpacePlot.save" title="Permalink to this definition">#</a></dt>
+<dd><p>Save the figure</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.phasespace.PhaseSpacePlot.set_axis_ticks_angle">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">set_axis_ticks_angle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">yaxis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L443-L458"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.phasespace.PhaseSpacePlot.set_axis_ticks_angle" title="Permalink to this definition">#</a></dt>
+<dd><p>Set ticks locator and formatter to display an angle</p>
+<p>This will set ticks at multiples or fractions of 180° or pi with appropriate labels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>yaxis</strong> – The axis to format (ax.xaxis or ax.yaxis)</p></li>
+<li><p><strong>minor</strong> (<em>bool</em>) – If true (default), also set the minor locator</p></li>
+<li><p><strong>deg</strong> (<em>bool</em>) – If true, use angles in degree. If false (default), in radians.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.phasespace.PhaseSpacePlot.title">
+<span class="sig-name descname"><span class="pre">title</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/base.py#L338-L340"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.phasespace.PhaseSpacePlot.title" title="Permalink to this definition">#</a></dt>
+<dd><p>Set figure title</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.phasespace.PhaseSpacePlot.title_for">
+<span class="sig-name descname"><span class="pre">title_for</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/phasespace.py#L452-L464"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.phasespace.PhaseSpacePlot.title_for" title="Permalink to this definition">#</a></dt>
+<dd><p>Plot title for a given pair (a,b) of properties</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xplt.phasespace.PhaseSpacePlot.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">particles</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">masks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autoscale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eltos/xplt/blob/main/xplt/phasespace.py#L292-L450"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xplt.phasespace.PhaseSpacePlot.update" title="Permalink to this definition">#</a></dt>
+<dd><p>Update the data this plot shows</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> – A dictionary with particle information</p></li>
+<li><p><strong>mask</strong> – An index mask to select particles to plot. If None, all particles are plotted.</p></li>
+<li><p><strong>masks</strong> – List of masks for each subplot.</p></li>
+<li><p><strong>autoscale</strong> – Whether or not to perform autoscaling on all axes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of changed artists.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="xplt.phasespace.pairwise">
+<span class="sig-prename descclassname"><span class="pre">xplt.phasespace.</span></span><span class="sig-name descname"><span class="pre">pairwise</span></span><a class="headerlink" href="#xplt.phasespace.pairwise" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</section>
+</section>
+</section>
+
+
+            </article>
+            
+            
+            
+            <footer class="bd-footer-article">
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+  <a class='left-prev' id="prev-link" href="../particles/index.html" title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+          <p class="prev-next-subtitle">previous</p>
+          <p class="prev-next-title"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xplt.particles</span></code></p>
+      </div>
+  </a>
+  <a class='right-next' id="next-link" href="../timestructure/index.html" title="next page">
+  <div class="prev-next-info">
+      <p class="prev-next-subtitle">next</p>
+      <p class="prev-next-title"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xplt.timestructure</span></code></p>
+  </div>
+  <i class="fa-solid fa-angle-right"></i>
+  </a>
+</div>
+            </footer>
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
+  
+<div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-contents">
+   Module Contents
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#classes">
+     Classes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#attributes">
+     Attributes
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#xplt.phasespace.PhaseSpacePlot">
+       PhaseSpacePlot
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.phasespace.PhaseSpacePlot.axflat">
+         axflat
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.phasespace.PhaseSpacePlot.circumference">
+         circumference
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.phasespace.PhaseSpacePlot.add_scale">
+         add_scale
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.phasespace.PhaseSpacePlot.axis_for">
+         axis_for
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.phasespace.PhaseSpacePlot.axline">
+         axline
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.phasespace.PhaseSpacePlot.beta">
+         beta
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.phasespace.PhaseSpacePlot.data_unit_for">
+         data_unit_for
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.phasespace.PhaseSpacePlot.display_unit_for">
+         display_unit_for
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.phasespace.PhaseSpacePlot.factor_for">
+         factor_for
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.phasespace.PhaseSpacePlot.frev">
+         frev
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.phasespace.PhaseSpacePlot.label_for">
+         label_for
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.phasespace.PhaseSpacePlot.plot_hamiltonian_kobayashi">
+         plot_hamiltonian_kobayashi
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.phasespace.PhaseSpacePlot.plot_harmonics">
+         plot_harmonics
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.phasespace.PhaseSpacePlot.save">
+         save
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.phasespace.PhaseSpacePlot.set_axis_ticks_angle">
+         set_axis_ticks_angle
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.phasespace.PhaseSpacePlot.title">
+         title
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.phasespace.PhaseSpacePlot.title_for">
+         title_for
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#xplt.phasespace.PhaseSpacePlot.update">
+         update
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#xplt.phasespace.pairwise">
+       pairwise
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+</div>
+
+<div class="toc-item">
+  
+<div id="searchbox"></div>
+</div>
+
+<div class="toc-item">
+  
+</div>
+
+<div class="toc-item">
+  
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+          </div>
+        </footer>
+        
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536"></script>
+
+  <footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    
+<p class="copyright">
+
+    &copy; Copyright 2022, Philipp Niedermayer (github.com/eltos).<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
+</p>
+
+  </div>
+  
+</div>
+  </footer>
+  </body>
+</html>
